@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<!-- saved from url=(0061)file:///C:/Users/ecough02/Downloads/scenario_generator_1.html -->
-<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
+<html lang="en">
+<head>
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Scenario Library: Foresight in Disaster Management</title>
-<link href="./scenario_generator_version0.1_files/css2" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Source+Serif+4:ital,wght@0,300;0,400;1,300&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -547,23 +547,26 @@
     line-height: 1.5;
   }
   .designer-prompt-q strong { color: var(--gold); }
-  .designer-input {
-    width: 100%;
-    padding: 0.5rem 0.75rem;
-    border: 1px solid rgba(184,134,11,0.35);
-    border-radius: var(--radius);
-    background: white;
-    font-family: 'Source Serif 4', Georgia, serif;
-    font-size: 14px;
-    color: var(--ink);
-    resize: vertical;
-    min-height: 52px;
-    line-height: 1.5;
-    outline: none;
-    transition: border-color 0.2s;
+  .designer-prompt-example {
+    font-size: 13px;
+    color: var(--ink-muted);
+    font-style: italic;
+    line-height: 1.55;
+    padding: 0.4rem 0.75rem;
+    border-left: 2px solid rgba(184,134,11,0.4);
+    margin-top: 0.25rem;
+    background: rgba(255,255,255,0.6);
+    border-radius: 0 var(--radius) var(--radius) 0;
   }
-  .designer-input:focus { border-color: var(--gold); }
-  .designer-input::placeholder { color: var(--ink-faint); font-style: italic; }
+  .example-label {
+    font-style: normal;
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-right: 0.4rem;
+  }
   /* Section C — Discussion questions */
   .discussion-questions {
     margin-top: 0;
@@ -650,7 +653,7 @@
 
   @media print {
     .nav-row, .progress-bar, .site-header .eyebrow, .regen-btn, .print-btn { display: none !important; }
-    .designer-input { border: 1px solid #ccc !important; min-height: 40px !important; }
+
     .day-section { break-inside: avoid; }
     .final-day { break-inside: avoid; page-break-inside: avoid; margin-bottom: 1.5rem; }
     .section { display: block !important; }
@@ -667,7 +670,7 @@
     <h1>Foresight in Disaster Management</h1>
   </header>
 
-  <nav class="progress-bar" id="progressBar"><div class="progress-step"><div class="step-dot active">1</div><div class="step-line"></div></div><div class="progress-step"><div class="step-dot">2</div><div class="step-line"></div></div><div class="progress-step"><div class="step-dot">3</div><div class="step-line"></div></div><div class="progress-step"><div class="step-dot">4</div><div class="step-line"></div></div><div class="progress-step"><div class="step-dot">5</div><div class="step-line"></div></div><div class="progress-step"><div class="step-dot">6</div><div class="step-line"></div></div><div class="progress-step"><div class="step-dot">7</div></div></nav>
+  <nav class="progress-bar" id="progressBar"></nav>
 
   <!-- SECTION 1: Introduction -->
   <section class="section active" id="section-1">
@@ -701,13 +704,13 @@
     </div>
 
     <div class="field-group">
-      <label class="field-label" for="roleDesc">Who are you? <span style="font-weight:300;text-transform:none;letter-spacing:0;font-family:&#39;Source Serif 4&#39;,serif;">(optional)</span></label>
+      <label class="field-label" for="roleDesc">Who are you? <span style="font-weight:300;text-transform:none;letter-spacing:0;font-family:'Source Serif 4',serif;">(optional)</span></label>
       <textarea id="roleDesc" placeholder="e.g. Emergency coordinator for Fulton County, responsible for heat response planning…"></textarea>
     </div>
 
     <div class="nav-row">
       <button class="btn btn-secondary" onclick="goTo(1)">← Back</button>
-      <button class="btn btn-primary" id="btn2next" onclick="goTo(3)" disabled="">Next →</button>
+      <button class="btn btn-primary" id="btn2next" onclick="goTo(3)" disabled>Next →</button>
     </div>
   </section>
 
@@ -731,17 +734,17 @@
     <div class="field-group">
       <label class="field-label">What hazard would you like to focus on?</label>
       <div class="radio-group" id="hazardGroup">
-        <label class="radio-option" onclick="selectRadio(this, &#39;hazard&#39;, &#39;Heatwave&#39;)">
+        <label class="radio-option" onclick="selectRadio(this, 'hazard', 'Heatwave')">
           <input type="radio" name="hazard" value="Heatwave">
           <div class="radio-dot"></div>
           <span class="radio-text">Heatwave</span>
         </label>
-        <label class="radio-option" onclick="selectRadio(this, &#39;hazard&#39;, &#39;Extreme rainfall&#39;)">
+        <label class="radio-option" onclick="selectRadio(this, 'hazard', 'Extreme rainfall')">
           <input type="radio" name="hazard" value="Extreme rainfall">
           <div class="radio-dot"></div>
           <span class="radio-text">Extreme rainfall</span>
         </label>
-        <label class="radio-option" onclick="selectRadio(this, &#39;hazard&#39;, &#39;Compound event&#39;)">
+        <label class="radio-option" onclick="selectRadio(this, 'hazard', 'Compound event')">
           <input type="radio" name="hazard" value="Compound event">
           <div class="radio-dot"></div>
           <span class="radio-text">Compound event: Heatwave + extreme rainfall</span>
@@ -751,7 +754,7 @@
 
     <div class="nav-row">
       <button class="btn btn-secondary" onclick="goTo(2)">← Back</button>
-      <button class="btn btn-primary" id="btn3next" onclick="goTo(4)" disabled="">Next →</button>
+      <button class="btn btn-primary" id="btn3next" onclick="goTo(4)" disabled>Next →</button>
     </div>
   </section>
 
@@ -764,17 +767,17 @@
     <div class="field-group">
       <label class="field-label">Type of event</label>
       <div class="radio-group" id="intensityGroup">
-        <label class="radio-option" onclick="selectRadio(this, &#39;intensity&#39;, &#39;Something that might happen every few years&#39;)">
+        <label class="radio-option" onclick="selectRadio(this, 'intensity', 'Something that might happen every few years')">
           <input type="radio" name="intensity" value="Something that might happen every few years">
           <div class="radio-dot"></div>
           <span class="radio-text">Something that might happen every few years</span>
         </label>
-        <label class="radio-option" onclick="selectRadio(this, &#39;intensity&#39;, &#39;A once-in-a-century event&#39;)">
+        <label class="radio-option" onclick="selectRadio(this, 'intensity', 'A once-in-a-century event')">
           <input type="radio" name="intensity" value="A once-in-a-century event">
           <div class="radio-dot"></div>
           <span class="radio-text">A once-in-a-century event</span>
         </label>
-        <label class="radio-option" onclick="selectRadio(this, &#39;intensity&#39;, &#39;The worst event our weather models can produce&#39;)">
+        <label class="radio-option" onclick="selectRadio(this, 'intensity', 'The worst event our weather models can produce')">
           <input type="radio" name="intensity" value="The worst event our weather models can produce">
           <div class="radio-dot"></div>
           <span class="radio-text">The worst event our weather models can produce</span>
@@ -784,7 +787,7 @@
 
     <div class="nav-row">
       <button class="btn btn-secondary" onclick="goTo(3)">← Back</button>
-      <button class="btn btn-primary" id="btn4next" onclick="goTo(5)" disabled="">Next →</button>
+      <button class="btn btn-primary" id="btn4next" onclick="goTo(5)" disabled>Next →</button>
     </div>
   </section>
 
@@ -796,40 +799,40 @@
 
     <div class="field-group">
       <div class="checkbox-group" id="capabilitiesGroup">
-        <label class="checkbox-option" onclick="toggleCheckbox(this,&#39;capabilities&#39;,event)">
+        <label class="checkbox-option" onclick="toggleCheckbox(this,'capabilities',event)">
           <input type="checkbox" value="Critical Transportation"><div class="checkbox-box"></div><span>Critical Transportation</span>
         </label>
-        <label class="checkbox-option" onclick="toggleCheckbox(this,&#39;capabilities&#39;,event)">
+        <label class="checkbox-option" onclick="toggleCheckbox(this,'capabilities',event)">
           <input type="checkbox" value="Food Security"><div class="checkbox-box"></div><span>Food Security</span>
         </label>
-        <label class="checkbox-option" onclick="toggleCheckbox(this,&#39;capabilities&#39;,event)">
+        <label class="checkbox-option" onclick="toggleCheckbox(this,'capabilities',event)">
           <input type="checkbox" value="Health and Social Services"><div class="checkbox-box"></div><span>Health and Social Services</span>
         </label>
-        <label class="checkbox-option" onclick="toggleCheckbox(this,&#39;capabilities&#39;,event)">
+        <label class="checkbox-option" onclick="toggleCheckbox(this,'capabilities',event)">
           <input type="checkbox" value="Housing"><div class="checkbox-box"></div><span>Housing</span>
         </label>
-        <label class="checkbox-option" onclick="toggleCheckbox(this,&#39;capabilities&#39;,event)">
+        <label class="checkbox-option" onclick="toggleCheckbox(this,'capabilities',event)">
           <input type="checkbox" value="Infrastructure Systems"><div class="checkbox-box"></div><span>Infrastructure Systems</span>
         </label>
-        <label class="checkbox-option" onclick="toggleCheckbox(this,&#39;capabilities&#39;,event)">
+        <label class="checkbox-option" onclick="toggleCheckbox(this,'capabilities',event)">
           <input type="checkbox" value="Logistics and Supply Chain Management"><div class="checkbox-box"></div><span>Logistics and Supply Chain Management</span>
         </label>
-        <label class="checkbox-option" onclick="toggleCheckbox(this,&#39;capabilities&#39;,event)">
+        <label class="checkbox-option" onclick="toggleCheckbox(this,'capabilities',event)">
           <input type="checkbox" value="Mass Search and Rescue Operations"><div class="checkbox-box"></div><span>Mass Search and Rescue Operations</span>
         </label>
-        <label class="checkbox-option" onclick="toggleCheckbox(this,&#39;capabilities&#39;,event)">
+        <label class="checkbox-option" onclick="toggleCheckbox(this,'capabilities',event)">
           <input type="checkbox" value="Mass Care Services"><div class="checkbox-box"></div><span>Mass Care Services</span>
         </label>
-        <label class="checkbox-option" onclick="toggleCheckbox(this,&#39;capabilities&#39;,event)">
+        <label class="checkbox-option" onclick="toggleCheckbox(this,'capabilities',event)">
           <input type="checkbox" value="Operational Communications"><div class="checkbox-box"></div><span>Operational Communications</span>
         </label>
-        <label class="checkbox-option" onclick="toggleCheckbox(this,&#39;capabilities&#39;,event)">
+        <label class="checkbox-option" onclick="toggleCheckbox(this,'capabilities',event)">
           <input type="checkbox" value="Operational Coordination"><div class="checkbox-box"></div><span>Operational Coordination</span>
         </label>
-        <label class="checkbox-option" onclick="toggleCheckbox(this,&#39;capabilities&#39;,event)">
+        <label class="checkbox-option" onclick="toggleCheckbox(this,'capabilities',event)">
           <input type="checkbox" value="Public Information and Warning"><div class="checkbox-box"></div><span>Public Information and Warning</span>
         </label>
-        <label class="checkbox-option" onclick="toggleCheckbox(this,&#39;capabilities&#39;,event)">
+        <label class="checkbox-option" onclick="toggleCheckbox(this,'capabilities',event)">
           <input type="checkbox" value="Situational Assessment"><div class="checkbox-box"></div><span>Situational Assessment</span>
         </label>
       </div>
@@ -849,12 +852,12 @@
     <div class="field-group">
       <label class="field-label" id="novelty-question-label">How prepared are you for this hazard?</label>
       <div class="radio-group">
-        <label class="radio-option" onclick="selectRadio(this, &#39;novelty&#39;, &#39;Known hazard&#39;)">
+        <label class="radio-option" onclick="selectRadio(this, 'novelty', 'Known hazard')">
           <input type="radio" name="novelty" value="Known hazard">
           <div class="radio-dot"></div>
           <span class="radio-text">This is an unusually severe but known hazard. We are familiar with this type of event and have plans and protocols in place.</span>
         </label>
-        <label class="radio-option" onclick="selectRadio(this, &#39;novelty&#39;, &#39;Unprecedented&#39;)">
+        <label class="radio-option" onclick="selectRadio(this, 'novelty', 'Unprecedented')">
           <input type="radio" name="novelty" value="Unprecedented">
           <div class="radio-dot"></div>
           <span class="radio-text">This is a surprising event. This type of event would be novel and unprecedented for us to manage.</span>
@@ -863,27 +866,27 @@
     </div>
 
     <div class="field-group">
-      <label class="field-label">What kind of problems would you like to consider? <span style="font-weight:300;text-transform:none;letter-spacing:0;font-family:&#39;Source Serif 4&#39;,serif;">(select all that apply)</span></label>
+      <label class="field-label">What common concerns would you like to explore? <span style="font-weight:300;text-transform:none;letter-spacing:0;font-family:'Source Serif 4',serif;">(select all that apply)</span></label>
       <div class="radio-group">
-        <label class="checkbox-option" style="align-items:flex-start;padding:0.85rem 1rem;" onclick="toggleCheckbox(this,&#39;failureModes&#39;,event)">
+        <label class="checkbox-option" style="align-items:flex-start;padding:0.85rem 1rem;" onclick="toggleCheckbox(this,'failureModes',event)">
           <input type="checkbox" value="Bottleneck Failure"><div class="checkbox-box" style="margin-top:3px;flex-shrink:0;"></div>
-          <span>Bottleneck Failure — a centralized system with chokepoints</span>
+          <span>Centralisation and bottlenecks</span>
         </label>
-        <label class="checkbox-option" style="align-items:flex-start;padding:0.85rem 1rem;" onclick="toggleCheckbox(this,&#39;failureModes&#39;,event)">
+        <label class="checkbox-option" style="align-items:flex-start;padding:0.85rem 1rem;" onclick="toggleCheckbox(this,'failureModes',event)">
           <input type="checkbox" value="Fragmentation Failure"><div class="checkbox-box" style="margin-top:3px;flex-shrink:0;"></div>
-          <span>Fragmentation Failure — coordination breakdown across actors</span>
+          <span>Coordination gaps and overlaps</span>
         </label>
-        <label class="checkbox-option" style="align-items:flex-start;padding:0.85rem 1rem;" onclick="toggleCheckbox(this,&#39;failureModes&#39;,event)">
+        <label class="checkbox-option" style="align-items:flex-start;padding:0.85rem 1rem;" onclick="toggleCheckbox(this,'failureModes',event)">
           <input type="checkbox" value="Adequacy Failure"><div class="checkbox-box" style="margin-top:3px;flex-shrink:0;"></div>
-          <span>Adequacy Failure — inadequate emergency management shifts burden to informal actors</span>
+          <span>Formal and informal response</span>
         </label>
-        <label class="checkbox-option" style="align-items:flex-start;padding:0.85rem 1rem;" onclick="toggleCheckbox(this,&#39;failureModes&#39;,event)">
+        <label class="checkbox-option" style="align-items:flex-start;padding:0.85rem 1rem;" onclick="toggleCheckbox(this,'failureModes',event)">
           <input type="checkbox" value="Misalignment Failure"><div class="checkbox-box" style="margin-top:3px;flex-shrink:0;"></div>
-          <span>Misalignment Failure — services mismatched with local needs</span>
+          <span>Service mismatches and local needs</span>
         </label>
-        <label class="checkbox-option" style="align-items:flex-start;padding:0.85rem 1rem;" onclick="toggleCheckbox(this,&#39;failureModes&#39;,event)">
+        <label class="checkbox-option" style="align-items:flex-start;padding:0.85rem 1rem;" onclick="toggleCheckbox(this,'failureModes',event)">
           <input type="checkbox" value="Erosion Failure"><div class="checkbox-box" style="margin-top:3px;flex-shrink:0;"></div>
-          <span>Erosion Failure — overall capacities are degraded over time</span>
+          <span>Capacity under sustained pressure</span>
         </label>
       </div>
     </div>
@@ -928,18 +931,1140 @@
 <script>
 // ─── EXCEL DATA ────────────────────────────────────────────────────────────
 const EXCEL_DATA = [
-  {location:"Atlanta, Georgia, USA",hazard:"Heatwave",intensity:"Something that might happen every few years",variable:"Temperature in Fahrenheit",days:[95,92,99,93,97,92,100,94,90,100]},
-  {location:"Atlanta, Georgia, USA",hazard:"Heatwave",intensity:"A once-in-a-century event",variable:"Temperature in Fahrenheit",days:[107,100,103,95,106,97,97,108,96,95]},
-  {location:"Atlanta, Georgia, USA",hazard:"Heatwave",intensity:"The worst event our weather models can produce",variable:"Temperature in Fahrenheit",days:[101,100,112,112,113,100,117,114,101,110]},
-  {location:"Dadaab, Kenya",hazard:"Heatwave",intensity:"Something that might happen every few years",variable:"Temperature in Fahrenheit",days:[98,99,98,91,99,92,90,94,93,97]},
-  {location:"Dadaab, Kenya",hazard:"Heatwave",intensity:"A once-in-a-century event",variable:"Temperature in Fahrenheit",days:[108,95,107,105,108,95,108,110,105,100]},
-  {location:"Dadaab, Kenya",hazard:"Heatwave",intensity:"The worst event our weather models can produce",variable:"Temperature in Fahrenheit",days:[113,102,114,102,114,104,101,101,117,102]},
-  {location:"Atlanta, Georgia, USA",hazard:"Extreme rainfall",intensity:"Something that might happen every few years",variable:"mm in one day",days:[13,9,1,100,92,100,1,20,1,12]},
-  {location:"Atlanta, Georgia, USA",hazard:"Extreme rainfall",intensity:"A once-in-a-century event",variable:"mm in one day",days:[18,19,15,104,109,139,2,8,19,14]},
-  {location:"Atlanta, Georgia, USA",hazard:"Extreme rainfall",intensity:"The worst event our weather models can produce",variable:"mm in one day",days:[12,5,15,124,177,147,3,18,17,13]},
-  {location:"Dadaab, Kenya",hazard:"Extreme rainfall",intensity:"Something that might happen every few years",variable:"mm in one day",days:[13,2,16,93,100,99,15,5,2,16]},
-  {location:"Dadaab, Kenya",hazard:"Extreme rainfall",intensity:"A once-in-a-century event",variable:"mm in one day",days:[20,13,0,111,133,107,6,9,13,18]},
-  {location:"Dadaab, Kenya",hazard:"Extreme rainfall",intensity:"The worst event our weather models can produce",variable:"mm in one day",days:[16,15,19,159,193,175,5,15,18,1]},
+  {
+    "location": "Atlanta, Georgia, USA",
+    "hazard": "Compound event",
+    "intensity": "Something that might happen every few years",
+    "tempUnit": "\u00b0F",
+    "days": [
+      {
+        "date": "2019-07-08",
+        "temp": 94.6,
+        "unit": "\u00b0F",
+        "prcp": 1.4
+      },
+      {
+        "date": "2019-07-09",
+        "temp": 98.0,
+        "unit": "\u00b0F",
+        "prcp": 1.6
+      },
+      {
+        "date": "2019-07-10",
+        "temp": 98.5,
+        "unit": "\u00b0F",
+        "prcp": 0.1
+      },
+      {
+        "date": "2019-07-11",
+        "temp": 99.9,
+        "unit": "\u00b0F",
+        "prcp": 0.6
+      },
+      {
+        "date": "2019-07-12",
+        "temp": 100.1,
+        "unit": "\u00b0F",
+        "prcp": 2.2
+      },
+      {
+        "date": "2019-07-13",
+        "temp": 98.3,
+        "unit": "\u00b0F",
+        "prcp": 41.1
+      },
+      {
+        "date": "2019-07-14",
+        "temp": 82.3,
+        "unit": "\u00b0F",
+        "prcp": 30.0
+      },
+      {
+        "date": "2019-07-15",
+        "temp": 75.9,
+        "unit": "\u00b0F",
+        "prcp": 9.6
+      },
+      {
+        "date": "2019-07-16",
+        "temp": 76.9,
+        "unit": "\u00b0F",
+        "prcp": 13.2
+      },
+      {
+        "date": "2019-07-17",
+        "temp": 84.2,
+        "unit": "\u00b0F",
+        "prcp": 13.4
+      },
+      {
+        "date": "2019-07-18",
+        "temp": 83.7,
+        "unit": "\u00b0F",
+        "prcp": 1.6
+      }
+    ]
+  },
+  {
+    "location": "Atlanta, Georgia, USA",
+    "hazard": "Compound event",
+    "intensity": "A once-in-a-century event",
+    "tempUnit": "\u00b0F",
+    "days": [
+      {
+        "date": "2017-08-07",
+        "temp": 94.8,
+        "unit": "\u00b0F",
+        "prcp": 0.5
+      },
+      {
+        "date": "2017-08-08",
+        "temp": 96.4,
+        "unit": "\u00b0F",
+        "prcp": 0.7
+      },
+      {
+        "date": "2017-08-09",
+        "temp": 95.7,
+        "unit": "\u00b0F",
+        "prcp": 11.0
+      },
+      {
+        "date": "2017-08-10",
+        "temp": 92.3,
+        "unit": "\u00b0F",
+        "prcp": 0.5
+      },
+      {
+        "date": "2017-08-11",
+        "temp": 96.3,
+        "unit": "\u00b0F",
+        "prcp": 0.3
+      },
+      {
+        "date": "2017-08-12",
+        "temp": 96.2,
+        "unit": "\u00b0F",
+        "prcp": 42.8
+      },
+      {
+        "date": "2017-08-13",
+        "temp": 81.7,
+        "unit": "\u00b0F",
+        "prcp": 2.7
+      },
+      {
+        "date": "2017-08-14",
+        "temp": 80.3,
+        "unit": "\u00b0F",
+        "prcp": 0.2
+      },
+      {
+        "date": "2017-08-15",
+        "temp": 82.3,
+        "unit": "\u00b0F",
+        "prcp": 0.0
+      },
+      {
+        "date": "2017-08-16",
+        "temp": 85.7,
+        "unit": "\u00b0F",
+        "prcp": 0.0
+      },
+      {
+        "date": "2017-08-17",
+        "temp": 88.1,
+        "unit": "\u00b0F",
+        "prcp": 0.0
+      }
+    ]
+  },
+  {
+    "location": "Atlanta, Georgia, USA",
+    "hazard": "Compound event",
+    "intensity": "The worst event our weather models can produce",
+    "tempUnit": "\u00b0F",
+    "days": [
+      {
+        "date": "2017-08-07",
+        "temp": 94.8,
+        "unit": "\u00b0F",
+        "prcp": 0.5
+      },
+      {
+        "date": "2017-08-08",
+        "temp": 96.4,
+        "unit": "\u00b0F",
+        "prcp": 0.7
+      },
+      {
+        "date": "2017-08-09",
+        "temp": 95.7,
+        "unit": "\u00b0F",
+        "prcp": 11.0
+      },
+      {
+        "date": "2017-08-10",
+        "temp": 92.3,
+        "unit": "\u00b0F",
+        "prcp": 0.5
+      },
+      {
+        "date": "2017-08-11",
+        "temp": 96.3,
+        "unit": "\u00b0F",
+        "prcp": 0.3
+      },
+      {
+        "date": "2017-08-12",
+        "temp": 96.2,
+        "unit": "\u00b0F",
+        "prcp": 42.8
+      },
+      {
+        "date": "2017-08-13",
+        "temp": 81.7,
+        "unit": "\u00b0F",
+        "prcp": 2.7
+      },
+      {
+        "date": "2017-08-14",
+        "temp": 80.3,
+        "unit": "\u00b0F",
+        "prcp": 0.2
+      },
+      {
+        "date": "2017-08-15",
+        "temp": 82.3,
+        "unit": "\u00b0F",
+        "prcp": 0.0
+      },
+      {
+        "date": "2017-08-16",
+        "temp": 85.7,
+        "unit": "\u00b0F",
+        "prcp": 0.0
+      },
+      {
+        "date": "2017-08-17",
+        "temp": 88.1,
+        "unit": "\u00b0F",
+        "prcp": 0.0
+      }
+    ]
+  },
+  {
+    "location": "Atlanta, Georgia, USA",
+    "hazard": "Extreme rainfall",
+    "intensity": "Something that might happen every few years",
+    "tempUnit": "\u00b0F",
+    "days": [
+      {
+        "date": "1981-05-11",
+        "prcp": 19.0
+      },
+      {
+        "date": "1981-05-12",
+        "prcp": 1.1
+      },
+      {
+        "date": "1981-05-13",
+        "prcp": 1.0
+      },
+      {
+        "date": "1981-05-14",
+        "prcp": 2.8
+      },
+      {
+        "date": "1981-05-15",
+        "prcp": 0.1
+      },
+      {
+        "date": "1981-05-16",
+        "prcp": 11.2
+      },
+      {
+        "date": "1981-05-17",
+        "prcp": 1.6
+      },
+      {
+        "date": "1981-05-18",
+        "prcp": 0.3
+      },
+      {
+        "date": "1981-05-19",
+        "prcp": 1.2
+      },
+      {
+        "date": "1981-05-20",
+        "prcp": 0.1
+      },
+      {
+        "date": "1981-05-21",
+        "prcp": 0.0
+      }
+    ]
+  },
+  {
+    "location": "Atlanta, Georgia, USA",
+    "hazard": "Extreme rainfall",
+    "intensity": "A once-in-a-century event",
+    "tempUnit": "\u00b0F",
+    "days": [
+      {
+        "date": "1981-04-05",
+        "prcp": 0.0
+      },
+      {
+        "date": "1981-04-06",
+        "prcp": 0.0
+      },
+      {
+        "date": "1981-04-07",
+        "prcp": 0.7
+      },
+      {
+        "date": "1981-04-08",
+        "prcp": 6.0
+      },
+      {
+        "date": "1981-04-09",
+        "prcp": 5.4
+      },
+      {
+        "date": "1981-04-10",
+        "prcp": 35.7
+      },
+      {
+        "date": "1981-04-11",
+        "prcp": 0.3
+      },
+      {
+        "date": "1981-04-12",
+        "prcp": 0.4
+      },
+      {
+        "date": "1981-04-13",
+        "prcp": 0.0
+      },
+      {
+        "date": "1981-04-14",
+        "prcp": 0.5
+      },
+      {
+        "date": "1981-04-15",
+        "prcp": 0.4
+      }
+    ]
+  },
+  {
+    "location": "Atlanta, Georgia, USA",
+    "hazard": "Extreme rainfall",
+    "intensity": "The worst event our weather models can produce",
+    "tempUnit": "\u00b0F",
+    "days": [
+      {
+        "date": "2004-08-24",
+        "prcp": 81.9
+      },
+      {
+        "date": "2004-08-25",
+        "prcp": 1.5
+      },
+      {
+        "date": "2004-08-26",
+        "prcp": 0.1
+      },
+      {
+        "date": "2004-08-27",
+        "prcp": 0.7
+      },
+      {
+        "date": "2004-08-28",
+        "prcp": 136.7
+      },
+      {
+        "date": "2004-08-29",
+        "prcp": 182.0
+      },
+      {
+        "date": "2004-08-30",
+        "prcp": 23.1
+      },
+      {
+        "date": "2004-08-31",
+        "prcp": 128.1
+      },
+      {
+        "date": "2004-09-01",
+        "prcp": 110.2
+      },
+      {
+        "date": "2004-09-02",
+        "prcp": 0.2
+      },
+      {
+        "date": "2004-09-03",
+        "prcp": null
+      }
+    ]
+  },
+  {
+    "location": "Atlanta, Georgia, USA",
+    "hazard": "Heatwave",
+    "intensity": "Something that might happen every few years",
+    "tempUnit": "\u00b0F",
+    "days": [
+      {
+        "date": "1981-06-18",
+        "temp": 77.9,
+        "unit": "\u00b0F"
+      },
+      {
+        "date": "1981-06-19",
+        "temp": 82.0,
+        "unit": "\u00b0F"
+      },
+      {
+        "date": "1981-06-20",
+        "temp": 83.8,
+        "unit": "\u00b0F"
+      },
+      {
+        "date": "1981-06-21",
+        "temp": 85.0,
+        "unit": "\u00b0F"
+      },
+      {
+        "date": "1981-06-22",
+        "temp": 87.4,
+        "unit": "\u00b0F"
+      },
+      {
+        "date": "1981-06-23",
+        "temp": 89.2,
+        "unit": "\u00b0F"
+      },
+      {
+        "date": "1981-06-24",
+        "temp": 86.2,
+        "unit": "\u00b0F"
+      },
+      {
+        "date": "1981-06-25",
+        "temp": 79.8,
+        "unit": "\u00b0F"
+      },
+      {
+        "date": "1981-06-26",
+        "temp": 82.2,
+        "unit": "\u00b0F"
+      },
+      {
+        "date": "1981-06-27",
+        "temp": 83.4,
+        "unit": "\u00b0F"
+      },
+      {
+        "date": "1981-06-28",
+        "temp": 83.7,
+        "unit": "\u00b0F"
+      }
+    ]
+  },
+  {
+    "location": "Atlanta, Georgia, USA",
+    "hazard": "Heatwave",
+    "intensity": "A once-in-a-century event",
+    "tempUnit": "\u00b0F",
+    "days": [
+      {
+        "date": "1981-07-26",
+        "temp": 87.4,
+        "unit": "\u00b0F"
+      },
+      {
+        "date": "1981-07-27",
+        "temp": 91.4,
+        "unit": "\u00b0F"
+      },
+      {
+        "date": "1981-07-28",
+        "temp": 92.4,
+        "unit": "\u00b0F"
+      },
+      {
+        "date": "1981-07-29",
+        "temp": 91.2,
+        "unit": "\u00b0F"
+      },
+      {
+        "date": "1981-07-30",
+        "temp": 95.9,
+        "unit": "\u00b0F"
+      },
+      {
+        "date": "1981-07-31",
+        "temp": 97.5,
+        "unit": "\u00b0F"
+      },
+      {
+        "date": "1981-08-01",
+        "temp": 98.6,
+        "unit": "\u00b0F"
+      },
+      {
+        "date": "1981-08-02",
+        "temp": 99.3,
+        "unit": "\u00b0F"
+      },
+      {
+        "date": "1981-08-03",
+        "temp": 101.1,
+        "unit": "\u00b0F"
+      },
+      {
+        "date": "1981-08-04",
+        "temp": 100.4,
+        "unit": "\u00b0F"
+      },
+      {
+        "date": "1981-08-05",
+        "temp": 98.7,
+        "unit": "\u00b0F"
+      }
+    ]
+  },
+  {
+    "location": "Atlanta, Georgia, USA",
+    "hazard": "Heatwave",
+    "intensity": "The worst event our weather models can produce",
+    "tempUnit": "\u00b0F",
+    "days": [
+      {
+        "date": "2023-07-19",
+        "temp": 106.9,
+        "unit": "\u00b0F"
+      },
+      {
+        "date": "2023-07-20",
+        "temp": 105.6,
+        "unit": "\u00b0F"
+      },
+      {
+        "date": "2023-07-21",
+        "temp": 108.0,
+        "unit": "\u00b0F"
+      },
+      {
+        "date": "2023-07-22",
+        "temp": 104.8,
+        "unit": "\u00b0F"
+      },
+      {
+        "date": "2023-07-23",
+        "temp": 106.9,
+        "unit": "\u00b0F"
+      },
+      {
+        "date": "2023-07-24",
+        "temp": 113.0,
+        "unit": "\u00b0F"
+      },
+      {
+        "date": "2023-07-25",
+        "temp": 108.2,
+        "unit": "\u00b0F"
+      },
+      {
+        "date": "2023-07-26",
+        "temp": 110.6,
+        "unit": "\u00b0F"
+      },
+      {
+        "date": "2023-07-27",
+        "temp": 111.1,
+        "unit": "\u00b0F"
+      },
+      {
+        "date": "2023-07-28",
+        "temp": 108.8,
+        "unit": "\u00b0F"
+      },
+      {
+        "date": "2023-07-29",
+        "temp": 103.5,
+        "unit": "\u00b0F"
+      }
+    ]
+  },
+  {
+    "location": "Dadaab, Kenya",
+    "hazard": "Compound event",
+    "intensity": "Something that might happen every few years",
+    "tempUnit": "\u00b0C",
+    "days": [
+      {
+        "date": "2024-04-17",
+        "temp": 34.9,
+        "unit": "\u00b0C",
+        "prcp": 0.6
+      },
+      {
+        "date": "2024-04-18",
+        "temp": 35.0,
+        "unit": "\u00b0C",
+        "prcp": 1.0
+      },
+      {
+        "date": "2024-04-19",
+        "temp": 37.5,
+        "unit": "\u00b0C",
+        "prcp": 1.0
+      },
+      {
+        "date": "2024-04-20",
+        "temp": 35.4,
+        "unit": "\u00b0C",
+        "prcp": 0.5
+      },
+      {
+        "date": "2024-04-21",
+        "temp": 37.9,
+        "unit": "\u00b0C",
+        "prcp": 0.9
+      },
+      {
+        "date": "2024-04-22",
+        "temp": 38.9,
+        "unit": "\u00b0C",
+        "prcp": 20.4
+      },
+      {
+        "date": "2024-04-23",
+        "temp": 33.5,
+        "unit": "\u00b0C",
+        "prcp": 3.0
+      },
+      {
+        "date": "2024-04-24",
+        "temp": 35.3,
+        "unit": "\u00b0C",
+        "prcp": 0.2
+      },
+      {
+        "date": "2024-04-25",
+        "temp": 36.1,
+        "unit": "\u00b0C",
+        "prcp": 0.0
+      },
+      {
+        "date": "2024-04-26",
+        "temp": 37.7,
+        "unit": "\u00b0C",
+        "prcp": 0.1
+      },
+      {
+        "date": "2024-04-27",
+        "temp": 38.5,
+        "unit": "\u00b0C",
+        "prcp": 0.1
+      }
+    ]
+  },
+  {
+    "location": "Dadaab, Kenya",
+    "hazard": "Compound event",
+    "intensity": "A once-in-a-century event",
+    "tempUnit": "\u00b0C",
+    "days": [
+      {
+        "date": "2024-04-01",
+        "temp": 38.1,
+        "unit": "\u00b0C",
+        "prcp": 0.0
+      },
+      {
+        "date": "2024-04-02",
+        "temp": 37.0,
+        "unit": "\u00b0C",
+        "prcp": 0.9
+      },
+      {
+        "date": "2024-04-03",
+        "temp": 38.5,
+        "unit": "\u00b0C",
+        "prcp": 0.6
+      },
+      {
+        "date": "2024-04-04",
+        "temp": 40.5,
+        "unit": "\u00b0C",
+        "prcp": 0.0
+      },
+      {
+        "date": "2024-04-05",
+        "temp": 37.8,
+        "unit": "\u00b0C",
+        "prcp": 0.8
+      },
+      {
+        "date": "2024-04-06",
+        "temp": 39.1,
+        "unit": "\u00b0C",
+        "prcp": 32.3
+      },
+      {
+        "date": "2024-04-07",
+        "temp": 32.9,
+        "unit": "\u00b0C",
+        "prcp": 1.2
+      },
+      {
+        "date": "2024-04-08",
+        "temp": 34.8,
+        "unit": "\u00b0C",
+        "prcp": 2.0
+      },
+      {
+        "date": "2024-04-09",
+        "temp": 32.8,
+        "unit": "\u00b0C",
+        "prcp": 20.4
+      },
+      {
+        "date": "2024-04-10",
+        "temp": 29.1,
+        "unit": "\u00b0C",
+        "prcp": 36.8
+      },
+      {
+        "date": "2024-04-11",
+        "temp": 32.3,
+        "unit": "\u00b0C",
+        "prcp": 1.0
+      }
+    ]
+  },
+  {
+    "location": "Dadaab, Kenya",
+    "hazard": "Compound event",
+    "intensity": "The worst event our weather models can produce",
+    "tempUnit": "\u00b0C",
+    "days": [
+      {
+        "date": "2024-03-28",
+        "temp": null,
+        "unit": "\u00b0C",
+        "prcp": null
+      },
+      {
+        "date": "2024-03-29",
+        "temp": null,
+        "unit": "\u00b0C",
+        "prcp": null
+      },
+      {
+        "date": "2024-03-30",
+        "temp": null,
+        "unit": "\u00b0C",
+        "prcp": null
+      },
+      {
+        "date": "2024-03-31",
+        "temp": null,
+        "unit": "\u00b0C",
+        "prcp": null
+      },
+      {
+        "date": "2024-04-01",
+        "temp": 35.0,
+        "unit": "\u00b0C",
+        "prcp": 0.4
+      },
+      {
+        "date": "2024-04-02",
+        "temp": 39.3,
+        "unit": "\u00b0C",
+        "prcp": 46.2
+      },
+      {
+        "date": "2024-04-03",
+        "temp": 29.3,
+        "unit": "\u00b0C",
+        "prcp": 16.1
+      },
+      {
+        "date": "2024-04-04",
+        "temp": 33.6,
+        "unit": "\u00b0C",
+        "prcp": 0.4
+      },
+      {
+        "date": "2024-04-05",
+        "temp": 34.4,
+        "unit": "\u00b0C",
+        "prcp": 0.1
+      },
+      {
+        "date": "2024-04-06",
+        "temp": 33.5,
+        "unit": "\u00b0C",
+        "prcp": 1.3
+      },
+      {
+        "date": "2024-04-07",
+        "temp": 34.0,
+        "unit": "\u00b0C",
+        "prcp": 0.2
+      }
+    ]
+  },
+  {
+    "location": "Dadaab, Kenya",
+    "hazard": "Extreme rainfall",
+    "intensity": "Something that might happen every few years",
+    "tempUnit": "\u00b0C",
+    "days": [
+      {
+        "date": "1981-03-23",
+        "prcp": 0.1
+      },
+      {
+        "date": "1981-03-24",
+        "prcp": 0.0
+      },
+      {
+        "date": "1981-03-25",
+        "prcp": 0.0
+      },
+      {
+        "date": "1981-03-26",
+        "prcp": 0.0
+      },
+      {
+        "date": "1981-03-27",
+        "prcp": 0.0
+      },
+      {
+        "date": "1981-03-28",
+        "prcp": 1.9
+      },
+      {
+        "date": "1981-03-29",
+        "prcp": 0.2
+      },
+      {
+        "date": "1981-03-30",
+        "prcp": 0.0
+      },
+      {
+        "date": "1981-03-31",
+        "prcp": 0.2
+      },
+      {
+        "date": "1981-04-01",
+        "prcp": 0.8
+      },
+      {
+        "date": "1981-04-02",
+        "prcp": 0.5
+      }
+    ]
+  },
+  {
+    "location": "Dadaab, Kenya",
+    "hazard": "Extreme rainfall",
+    "intensity": "A once-in-a-century event",
+    "tempUnit": "\u00b0C",
+    "days": [
+      {
+        "date": "1981-10-11",
+        "prcp": 0.0
+      },
+      {
+        "date": "1981-10-12",
+        "prcp": 0.0
+      },
+      {
+        "date": "1981-10-13",
+        "prcp": 0.5
+      },
+      {
+        "date": "1981-10-14",
+        "prcp": 5.8
+      },
+      {
+        "date": "1981-10-15",
+        "prcp": 9.0
+      },
+      {
+        "date": "1981-10-16",
+        "prcp": 12.5
+      },
+      {
+        "date": "1981-10-17",
+        "prcp": 1.5
+      },
+      {
+        "date": "1981-10-18",
+        "prcp": 0.7
+      },
+      {
+        "date": "1981-10-19",
+        "prcp": 0.6
+      },
+      {
+        "date": "1981-10-20",
+        "prcp": 0.5
+      },
+      {
+        "date": "1981-10-21",
+        "prcp": 0.5
+      }
+    ]
+  },
+  {
+    "location": "Dadaab, Kenya",
+    "hazard": "Extreme rainfall",
+    "intensity": "The worst event our weather models can produce",
+    "tempUnit": "\u00b0C",
+    "days": [
+      {
+        "date": "1997-10-18",
+        "prcp": 3.1
+      },
+      {
+        "date": "1997-10-19",
+        "prcp": 2.7
+      },
+      {
+        "date": "1997-10-20",
+        "prcp": 15.7
+      },
+      {
+        "date": "1997-10-21",
+        "prcp": 3.8
+      },
+      {
+        "date": "1997-10-22",
+        "prcp": 60.5
+      },
+      {
+        "date": "1997-10-23",
+        "prcp": 151.3
+      },
+      {
+        "date": "1997-10-24",
+        "prcp": 31.2
+      },
+      {
+        "date": "1997-10-25",
+        "prcp": 0.5
+      },
+      {
+        "date": "1997-10-26",
+        "prcp": 0.1
+      },
+      {
+        "date": "1997-10-27",
+        "prcp": 1.2
+      },
+      {
+        "date": "1997-10-28",
+        "prcp": 2.7
+      }
+    ]
+  },
+  {
+    "location": "Dadaab, Kenya",
+    "hazard": "Heatwave",
+    "intensity": "Something that might happen every few years",
+    "tempUnit": "\u00b0C",
+    "days": [
+      {
+        "date": "1982-03-30",
+        "temp": null,
+        "unit": "\u00b0C"
+      },
+      {
+        "date": "1982-03-31",
+        "temp": null,
+        "unit": "\u00b0C"
+      },
+      {
+        "date": "1982-04-01",
+        "temp": 37.6,
+        "unit": "\u00b0C"
+      },
+      {
+        "date": "1982-04-02",
+        "temp": 36.5,
+        "unit": "\u00b0C"
+      },
+      {
+        "date": "1982-04-03",
+        "temp": 37.2,
+        "unit": "\u00b0C"
+      },
+      {
+        "date": "1982-04-04",
+        "temp": 37.6,
+        "unit": "\u00b0C"
+      },
+      {
+        "date": "1982-04-05",
+        "temp": 36.3,
+        "unit": "\u00b0C"
+      },
+      {
+        "date": "1982-04-06",
+        "temp": 36.4,
+        "unit": "\u00b0C"
+      },
+      {
+        "date": "1982-04-07",
+        "temp": 33.2,
+        "unit": "\u00b0C"
+      },
+      {
+        "date": "1982-04-08",
+        "temp": 33.8,
+        "unit": "\u00b0C"
+      },
+      {
+        "date": "1982-04-09",
+        "temp": 34.5,
+        "unit": "\u00b0C"
+      }
+    ]
+  },
+  {
+    "location": "Dadaab, Kenya",
+    "hazard": "Heatwave",
+    "intensity": "A once-in-a-century event",
+    "tempUnit": "\u00b0C",
+    "days": [
+      {
+        "date": "2007-02-02",
+        "temp": 37.2,
+        "unit": "\u00b0C"
+      },
+      {
+        "date": "2007-02-03",
+        "temp": 37.3,
+        "unit": "\u00b0C"
+      },
+      {
+        "date": "2007-02-04",
+        "temp": 37.9,
+        "unit": "\u00b0C"
+      },
+      {
+        "date": "2007-02-05",
+        "temp": 38.3,
+        "unit": "\u00b0C"
+      },
+      {
+        "date": "2007-02-06",
+        "temp": 37.8,
+        "unit": "\u00b0C"
+      },
+      {
+        "date": "2007-02-07",
+        "temp": 39.4,
+        "unit": "\u00b0C"
+      },
+      {
+        "date": "2007-02-08",
+        "temp": 37.9,
+        "unit": "\u00b0C"
+      },
+      {
+        "date": "2007-02-09",
+        "temp": 39.3,
+        "unit": "\u00b0C"
+      },
+      {
+        "date": "2007-02-10",
+        "temp": 39.8,
+        "unit": "\u00b0C"
+      },
+      {
+        "date": "2007-02-11",
+        "temp": 38.7,
+        "unit": "\u00b0C"
+      },
+      {
+        "date": "2007-02-12",
+        "temp": 39.2,
+        "unit": "\u00b0C"
+      }
+    ]
+  },
+  {
+    "location": "Dadaab, Kenya",
+    "hazard": "Heatwave",
+    "intensity": "The worst event our weather models can produce",
+    "tempUnit": "\u00b0C",
+    "days": [
+      {
+        "date": "2018-03-21",
+        "temp": 39.9,
+        "unit": "\u00b0C"
+      },
+      {
+        "date": "2018-03-22",
+        "temp": 40.7,
+        "unit": "\u00b0C"
+      },
+      {
+        "date": "2018-03-23",
+        "temp": 41.4,
+        "unit": "\u00b0C"
+      },
+      {
+        "date": "2018-03-24",
+        "temp": 40.0,
+        "unit": "\u00b0C"
+      },
+      {
+        "date": "2018-03-25",
+        "temp": 41.5,
+        "unit": "\u00b0C"
+      },
+      {
+        "date": "2018-03-26",
+        "temp": 42.6,
+        "unit": "\u00b0C"
+      },
+      {
+        "date": "2018-03-27",
+        "temp": 41.4,
+        "unit": "\u00b0C"
+      },
+      {
+        "date": "2018-03-28",
+        "temp": 39.3,
+        "unit": "\u00b0C"
+      },
+      {
+        "date": "2018-03-29",
+        "temp": 38.2,
+        "unit": "\u00b0C"
+      },
+      {
+        "date": "2018-03-30",
+        "temp": 37.2,
+        "unit": "\u00b0C"
+      },
+      {
+        "date": "2018-03-31",
+        "temp": 36.8,
+        "unit": "\u00b0C"
+      }
+    ]
+  }
 ];
 
 // ─── STATE ─────────────────────────────────────────────────────────────────
@@ -950,7 +2075,16 @@ const state = {
 
 // ─── SCENARIO ENGINE ───────────────────────────────────────────────────────
 function getData(location, hazard, intensity) {
-  return EXCEL_DATA.find(r => r.location===location && r.hazard===hazard && r.intensity===intensity);
+  return EXCEL_DATA.find(r => r.location===location && r.hazard===hazard && r.intensity===intensity) || null;
+}
+function getDayValue(row, dayIndex, field) {
+  if (!row || !row.days || dayIndex >= row.days.length) return null;
+  const v = row.days[dayIndex][field];
+  return (v === null || v === undefined) ? null : v;
+}
+function getDayDate(row, dayIndex) {
+  if (!row || !row.days || dayIndex >= row.days.length) return null;
+  return row.days[dayIndex].date || null;
 }
 
 function getPeakDay(days) {
@@ -961,25 +2095,61 @@ function buildNarrative(dayIndex) {
   const city = state.location.split(',')[0];
   const isHeat = state.hazard === 'Heatwave' || state.hazard === 'Compound event';
   const isRain = state.hazard === 'Extreme rainfall' || state.hazard === 'Compound event';
-  const heatRow = isHeat ? getData(state.location, 'Heatwave', state.intensity) : null;
-  const rainRow = isRain ? getData(state.location, 'Extreme rainfall', state.intensity) : null;
-  const dayIdxMap = [0, 2, 4, 6, 9]; // Day 1,3,5,7,10
-  const di = dayIdxMap[dayIndex];
-  const hv = heatRow ? heatRow.days[di] : null;
-  const rv = rainRow ? rainRow.days[di] : null;
-  const peakHeat = heatRow ? Math.max(...heatRow.days) : null;
-  const peakRain = rainRow ? Math.max(...rainRow.days) : null;
+  const isCompound = isHeat && isRain;
 
-  // ── Weather opening: just state the recorded value, no interpretation ────────
-  let weatherOpening = '';
-  if (isHeat && hv !== null) {
-    weatherOpening = `Today's recorded temperature is ${hv}°F.`;
-    if (isRain && rv !== null && rv > 5) {
-      weatherOpening += ` Rainfall of ${rv}mm is also recorded today.`;
-    }
-  } else if (isRain && rv !== null) {
-    weatherOpening = `Today's recorded rainfall is ${rv}mm.`;
+  // For compound events, get the compound row (has both temp and prcp)
+  const compoundRow = isCompound ? getData(state.location, 'Compound event', state.intensity) : null;
+  const heatRow = isHeat ? (compoundRow || getData(state.location, 'Heatwave', state.intensity)) : null;
+  const rainRow = isRain ? (compoundRow || getData(state.location, 'Extreme rainfall', state.intensity)) : null;
+  const dataRow = heatRow || rainRow;
+  const tempUnit = heatRow ? (heatRow.tempUnit || '°F') : '°F';
+
+  // ── Which data indices to show per scenario day ───────────────────────────
+  // Scenario days map to data indices:
+  //   Day 1  → [0]          (today only)
+  //   Day 3  → [1, 2]       (days 2 and 3)
+  //   Day 5  → [3, 4]       (days 4 and 5)
+  //   Day 7  → [5, 6]       (days 6 and 7)
+  //   Day 10 → [7, 8, 9]    (days 8, 9 and 10)
+  const dayRangeMap = [[0], [1,2], [3,4], [5,6], [7,8,9]];
+  const indices = dayRangeMap[dayIndex];
+
+  // ── Helper: format a date string as "Month D" ────────────────────────────
+  function fmtDate(ds) {
+    if (!ds) return null;
+    const d = new Date(ds + 'T12:00:00');
+    return d.toLocaleString('en-US', {month:'long', day:'numeric'});
   }
+
+  // ── Helper: build one day's weather sentence ─────────────────────────────
+  function dayWeatherSentence(idx, isToday) {
+    const ds = getDayDate(dataRow, idx);
+    const label = fmtDate(ds) || (isToday ? 'Today' : `Day ${idx+1}`);
+    const hv = heatRow ? getDayValue(heatRow, idx, 'temp') : null;
+    const rv = rainRow ? getDayValue(rainRow, idx, 'prcp') : null;
+
+    let parts = [];
+    if (isHeat && hv !== null) {
+      parts.push(`temperature ${hv}${tempUnit}`);
+    }
+    // Always include rainfall for compound events; for rain-only, always include
+    if (isRain && rv !== null) {
+      parts.push(`rainfall ${rv}mm`);
+    }
+
+    if (parts.length === 0) return null;
+    return `${label}: ${parts.join(', ')}.`;
+  }
+
+  // ── Build weather sentences for all days in range ────────────────────────
+  const sentences = indices.map((idx, i) => dayWeatherSentence(idx, i === indices.length - 1)).filter(Boolean);
+  const weatherOpening = sentences.join(' ');
+
+  // Peak values (for arc context)
+  const allTemps = heatRow ? heatRow.days.map(d=>d.temp).filter(v=>v!==null) : [];
+  const allPrcps = rainRow ? rainRow.days.map(d=>d.prcp).filter(v=>v!==null) : [];
+  const peakHeat = allTemps.length ? Math.max(...allTemps) : null;
+  const peakRain = allPrcps.length ? Math.max(...allPrcps) : null;
 
   // ── Arc context: describe the event arc without interpreting individual values ──
   const heatImpactExamples = [
@@ -1030,16 +2200,29 @@ function buildQuestions(dayIndex) {
   const isLate = dayIndex >= 3;
 
   // ── Shared decision-focused questions, vary by day phase ─────────────────
+  // Intensity label for shared questions
+  const intensityLabel = state.intensity === 'The worst event our weather models can produce'
+    ? 'an extreme, potentially unprecedented event'
+    : state.intensity === 'A once-in-a-century event'
+    ? 'a rare, severe event that may exceed your plans'
+    : 'an unusual but manageable event';
+
   const sharedQs = isEarly ? [
     dayIndex === 0
-      ? `How is your organisation's normal day-to-day work going on Day 1 of this event? Are you aware that this event is happening, and if so, what — if anything — are you doing about it?`
-      : `By Day 3, is your organisation actively responding to this event, monitoring it, or still largely focused on its normal workload? What has triggered any change in your level of attention?`,
+      ? `How is your organisation's normal day-to-day work going on Day 1? Are you aware this event is developing, and has anything changed in how you are operating?`
+      : `By Day 3, is your organisation actively responding, monitoring, or still largely focused on normal work? What has triggered any change in your level of attention?`,
     dayIndex === 0
-      ? `Does your organisation have a plan or protocol that would apply to this type of event? If so, has it been activated, and who would make that decision?`
-      : `What information is your organisation currently tracking about this event, and where is it coming from? Are you in contact with other organisations that are responding?`,
+      ? `Does your organisation have a plan for this type of event? Has it been activated, and who would make that decision?`
+      : state.intensity === 'The worst event our weather models can produce'
+        ? `Given that forecasts suggest this will be an extreme event, what steps is your organisation taking now — before conditions peak — that it might not take for a more routine situation?`
+        : `What information is your organisation currently tracking about this event, and are you in contact with other organisations that are responding?`,
   ] : isMid ? [
-    `Resources are being stretched across multiple needs simultaneously. How does your organisation decide what to prioritise, and who makes that call?`,
-    `You receive two urgent requests for support at the same time. Walk through how you decide which to respond to first.`,
+    `Resources are being stretched. How does your organisation decide what to prioritise, and who makes that call?`,
+    state.intensity === 'Something that might happen every few years'
+      ? `Is your existing response plan holding up to the demands of this event, or are you having to adapt it? What is working and what is not?`
+      : state.intensity === 'A once-in-a-century event'
+      ? `You receive two urgent requests for support at the same time — both serious. Walk through how you decide which to respond to first.`
+      : `The scale of this event is beyond what most plans anticipated. What decisions are you making now that have no clear precedent in your protocols?`,
   ] : [
     `Your team is showing signs of fatigue after days of sustained response. How do you manage this while maintaining operations?`,
     `Looking back at decisions made earlier in the event, which one would you revisit, and what would you do differently?`,
@@ -1202,22 +2385,65 @@ function buildQuestions(dayIndex) {
     ],
   };
 
-  // Assemble: 2 shared + up to 1 failure-mode question + up to 1 capability question
-  const questions = [...sharedQs];
+  // ── Intensity calibration ────────────────────────────────────────────────
+  const intensity = state.intensity || '';
+  const is10yr   = intensity === 'Something that might happen every few years';
+  const is100yr  = intensity === 'A once-in-a-century event';
+  const isWorst  = intensity === 'The worst event our weather models can produce';
 
-  // Add failure-mode question if selected
-  for (const fm of failureModes) {
-    if (failureQs[fm]) {
-      questions.push(failureQs[fm][dayIndex][0]);
-      break;
+  // ── Assemble questions — count varies by day and intensity ───────────────
+  // Day 1 (index 0): 1 question only — just awareness/preparedness
+  // Day 3 (index 1): 2 questions — 1 shared + 1 failure or capability
+  // Days 5-10 (index 2-4): scaled by intensity
+  //   10-yr: 2 shared + failure OR capability (not both) = max 3
+  //   100-yr: 2 shared + failure + capability = max 4
+  //   Worst: 2 shared + failure + capability = max 4, plus an extra intensity prompt
+
+  const questions = [];
+
+  if (dayIndex === 0) {
+    // Day 1 — single orienting question only
+    questions.push(sharedQs[0]);
+
+  } else if (dayIndex === 1) {
+    // Day 3 — 1 shared + 1 failure or capability
+    questions.push(sharedQs[0]);
+    let added = false;
+    for (const fm of failureModes) {
+      if (failureQs[fm]) { questions.push(failureQs[fm][dayIndex][0]); added = true; break; }
     }
-  }
+    if (!added && capabilities.length > 0) {
+      const cap = capabilities[dayIndex % capabilities.length];
+      if (capabilityQs[cap]) questions.push(capabilityQs[cap][dayIndex]);
+    }
 
-  // Always add a capability-specific question if any capabilities selected
-  // Rotate through selected capabilities across days
-  if (capabilities.length > 0) {
-    const cap = capabilities[dayIndex % capabilities.length];
-    if (capabilityQs[cap]) questions.push(capabilityQs[cap][dayIndex]);
+  } else {
+    // Days 5, 7, 10 — full set, scaled by intensity
+    questions.push(...sharedQs);
+
+    // Failure mode question
+    for (const fm of failureModes) {
+      if (failureQs[fm]) { questions.push(failureQs[fm][dayIndex][0]); break; }
+    }
+
+    // Capability question — for 10-yr, only if no failure mode was added
+    const hasFailure = failureModes.some(fm => failureQs[fm]);
+    if (capabilities.length > 0) {
+      if (!is10yr || !hasFailure) {
+        const cap = capabilities[dayIndex % capabilities.length];
+        if (capabilityQs[cap]) questions.push(capabilityQs[cap][dayIndex]);
+      }
+    }
+
+    // Extra intensity-specific prompt for worst-case events
+    if (isWorst) {
+      const worstQs = [
+        `This event is at the outer limit of what models project. Are there aspects of this situation that your organisation has genuinely never planned for? How are you making decisions in that territory?`,
+        `At this scale, some normal response assumptions may not hold. What has surprised you most about how the situation has developed, and how has that changed your approach?`,
+        `This is an unprecedented level of stress on your systems. What would you need — that you do not currently have — to respond adequately at this scale?`,
+      ];
+      questions.push(worstQs[dayIndex - 2]);
+    }
   }
 
   return questions.filter(Boolean);
@@ -1227,11 +2453,17 @@ function buildPreviewScenario() {
   const city = state.location.split(',')[0];
   const row = getData(state.location, 'Heatwave', 'A once-in-a-century event');
   if (!row) return null;
-  const d = row.days;
+  const t0 = getDayValue(row,0,'temp'), t4 = getDayValue(row,4,'temp'), t9 = getDayValue(row,9,'temp') || getDayValue(row,10,'temp');
+  const u = row.tempUnit || '°F';
+  const d0 = getDayDate(row,0), d4 = getDayDate(row,4), d9 = getDayDate(row,9) || getDayDate(row,10);
+  const fmt = (ds) => ds ? new Date(ds+'T12:00:00').toLocaleString('en-US',{month:'long',day:'numeric'}) : '';
+  const v0 = t0 !== null ? `${t0}${u}` : 'elevated temperatures';
+  const v4 = t4 !== null ? `${t4}${u}` : 'elevated temperatures';
+  const v9 = t9 !== null ? `${t9}${u}` : 'elevated temperatures';
   return {
-    day1: `Temperatures in ${city} reach ${d[0]} degrees Fahrenheit. Health services begin to see more patients than usual, and community workers are checking on residents who may be struggling to stay cool.`,
-    day5: `Temperatures remain high at ${d[4]} degrees. Cooling centers are in use and organizations are working to make sure residents who cannot travel are getting support.`,
-    day10: `The final day of the event records ${d[9]} degrees. Organizations are beginning to assess the overall impact and identify who still needs follow-up support.`,
+    day1: `${fmt(d0)}. Temperatures in ${city} reach ${v0}. Health services begin to see more patients than usual, and community workers are checking on residents who may be struggling to stay cool.`,
+    day5: `${fmt(d4)}. Temperatures reach ${v4}. Cooling centres are in use and organisations are working to make sure residents who cannot travel are getting support.`,
+    day10: `${fmt(d9)}. The final day of the event records ${v9}. Organisations are beginning to assess the overall impact and identify who still needs follow-up support.`,
   };
 }
 
@@ -1599,7 +2831,7 @@ function renderDayHTML(dayLabel, dayIndex) {
       <div class="designer-prompt">
         ${p.hint ? `<div class="designer-prompt-hint">${p.hint}</div>` : ''}
         <div class="designer-prompt-q"><strong>Q${i+1}.</strong> ${p.q}</div>
-        <textarea class="designer-input" placeholder="${p.placeholder}" rows="2"></textarea>
+
       </div>`).join('')
   }</div>`;
 
@@ -1625,7 +2857,7 @@ function renderDayHTML(dayLabel, dayIndex) {
       <div class="day-section designer">
         <div class="day-section-header">
           <span class="section-num">B</span>
-          Scenario designer — describe your local context
+          Design questions — answer these when preparing your scenario
         </div>
         <div class="day-section-body">${designerHtml}</div>
       </div>
@@ -1719,7 +2951,7 @@ function onEnterSection7() {
     <span class="tag tag-terra">${state.hazard}</span>
     <span class="tag tag-gold">${state.intensity}</span>
     ${state.capabilities.map(c => '<span class="tag tag-teal">' + c + '</span>').join('')}
-    ${state.failureModes.map(f => '<span class="tag tag-gold">' + f + '</span>').join('')}
+    ${state.failureModes.map(f => '<span class="tag tag-gold">' + f.replace(' Failure','') + '</span>').join('')}
   `;
   // Header
   document.getElementById('final-scenario-title').textContent = city + ' — ' + state.hazard + ' scenario';
@@ -1792,6 +3024,5 @@ function startOver() {
 renderProgress();
 </script>
 
-
-
-</body></html>
+</body>
+</html>
