@@ -525,6 +525,11 @@
   .day-section.weather .day-section-header { background: var(--terracotta-light); color: var(--terracotta); }
   .day-section.weather .section-num { background: var(--terracotta); color: white; }
   .day-section.weather .day-section-body { background: white; border: 1px solid rgba(196,88,58,0.15); border-top: none; font-size: 15px; line-height: 1.7; color: var(--ink); }
+  .weather-log { display: flex; flex-direction: column; gap: 0.5rem; }
+  .weather-row { display: flex; align-items: baseline; gap: 1rem; }
+  .weather-date { font-family: 'DM Mono', monospace; font-size: 12px; color: var(--terracotta); letter-spacing: 0.03em; min-width: 130px; flex-shrink: 0; }
+  .weather-vals { font-size: 15px; color: var(--ink); font-variant-numeric: tabular-nums; }
+  .weather-arc { font-size: 14px; color: var(--ink-muted); margin-top: 0.85rem; line-height: 1.65; border-top: 1px solid var(--border); padding-top: 0.75rem; }
   /* Section B — Designer prompts */
   .day-section.designer .day-section-header { background: var(--gold-light); color: var(--gold); }
   .day-section.designer .section-num { background: var(--gold); color: white; }
@@ -2121,29 +2126,23 @@ function buildNarrative(dayIndex) {
     return d.toLocaleString('en-US', {month:'long', day:'numeric'});
   }
 
-  // ── Helper: build one day's weather sentence ─────────────────────────────
-  function dayWeatherSentence(idx, isToday) {
+  // ── Helper: build one day's weather line ─────────────────────────────────
+  function dayWeatherLine(idx) {
     const ds = getDayDate(dataRow, idx);
-    const label = fmtDate(ds) || (isToday ? 'Today' : `Day ${idx+1}`);
+    const label = fmtDate(ds) || `Day ${idx+1}`;
     const hv = heatRow ? getDayValue(heatRow, idx, 'temp') : null;
     const rv = rainRow ? getDayValue(rainRow, idx, 'prcp') : null;
 
-    let parts = [];
-    if (isHeat && hv !== null) {
-      parts.push(`temperature ${hv}${tempUnit}`);
-    }
-    // Always include rainfall for compound events; for rain-only, always include
-    if (isRain && rv !== null) {
-      parts.push(`rainfall ${rv}mm`);
-    }
-
-    if (parts.length === 0) return null;
-    return `${label}: ${parts.join(', ')}.`;
+    let values = [];
+    if (isHeat && hv !== null) values.push(`${hv}${tempUnit}`);
+    if (isRain && rv !== null) values.push(`${rv}mm rain`);
+    if (values.length === 0) return null;
+    return `<span class="weather-date">${label}</span><span class="weather-vals">${values.join(' &nbsp;·&nbsp; ')}</span>`;
   }
 
-  // ── Build weather sentences for all days in range ────────────────────────
-  const sentences = indices.map((idx, i) => dayWeatherSentence(idx, i === indices.length - 1)).filter(Boolean);
-  const weatherOpening = sentences.join(' ');
+  // ── Build weather lines for all days in range ─────────────────────────────
+  const lines = indices.map(idx => dayWeatherLine(idx)).filter(Boolean);
+  const weatherOpening = `<div class="weather-log">${lines.map(l => `<div class="weather-row">${l}</div>`).join('')}</div>`;
 
   // Peak values (for arc context)
   const allTemps = heatRow ? heatRow.days.map(d=>d.temp).filter(v=>v!==null) : [];
@@ -2184,8 +2183,8 @@ function buildNarrative(dayIndex) {
       : `This is the final day of the scenario. ` + rainImpactExamples[1],
   };
 
-  const parts = [weatherOpening, arcContext[dayIndex]].filter(Boolean);
-  return parts.join(' ');
+  const arc = arcContext[dayIndex] || '';
+  return weatherOpening + (arc ? `<p class="weather-arc">${arc}</p>` : '');
 }
 
 function buildQuestions(dayIndex) {
