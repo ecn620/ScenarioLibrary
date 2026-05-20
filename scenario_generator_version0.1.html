@@ -526,9 +526,7 @@
   .day-section.weather .section-num { background: var(--terracotta); color: white; }
   .day-section.weather .day-section-body { background: white; border: 1px solid rgba(196,88,58,0.15); border-top: none; font-size: 15px; line-height: 1.7; color: var(--ink); }
   .weather-log { display: flex; flex-direction: column; gap: 0.5rem; }
-  .weather-row { display: flex; align-items: baseline; gap: 1rem; }
-  .weather-date { font-family: 'DM Mono', monospace; font-size: 12px; color: var(--terracotta); letter-spacing: 0.03em; min-width: 130px; flex-shrink: 0; }
-  .weather-vals { font-size: 15px; color: var(--ink); font-variant-numeric: tabular-nums; }
+  .weather-row { font-size: 15px; color: var(--ink); line-height: 1.7; }
   .weather-arc { font-size: 14px; color: var(--ink-muted); margin-top: 0.85rem; line-height: 1.65; border-top: 1px solid var(--border); padding-top: 0.75rem; }
   /* Section B — Designer prompts */
   .day-section.designer .day-section-header { background: var(--gold-light); color: var(--gold); }
@@ -572,6 +570,32 @@
     color: var(--gold);
     margin-right: 0.4rem;
   }
+  /* Section B — Disaster management system */
+  .day-section.vc-system .day-section-header { background: #EEF0FB; color: #3A4BA0; }
+  .day-section.vc-system .section-num { background: #3A4BA0; color: white; }
+  .day-section.vc-system .day-section-body { background: white; border: 1px solid rgba(58,75,160,0.15); border-top: none; }
+  .vc-narratives { display: flex; flex-direction: column; gap: 1.25rem; }
+  .vc-block { }
+  .vc-block-label { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: #3A4BA0; margin-bottom: 0.35rem; }
+  .vc-block-text { font-size: 15px; color: var(--ink); line-height: 1.7; margin: 0; }
+  .vc-none { font-size: 14px; color: var(--ink-faint); font-style: italic; margin: 0; }
+  /* Section C — Discussion questions */
+  .day-section.discussion .day-section-header { background: var(--teal-light); color: var(--teal); }
+  .day-section.discussion .section-num { background: var(--teal); color: white; }
+  .day-section.discussion .day-section-body { background: white; border: 1px solid rgba(42,107,107,0.15); border-top: none; }
+  .discussion-list { margin: 0; padding-left: 1.25rem; display: flex; flex-direction: column; gap: 0.5rem; }
+  .discussion-list li { font-size: 14px; color: var(--ink); line-height: 1.6; }
+  /* VC Prompts */
+  .vc-prompts { margin-top: 0; }
+  .vc-prompt-block { border-left: 3px solid #3A4BA0; padding: 1rem 1.25rem; background: #EEF0FB; border-radius: 0 var(--radius) var(--radius) 0; margin-bottom: 1rem; }
+  .vc-prompt-block .vc-prompt-label { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: #3A4BA0; margin-bottom: 0.4rem; }
+  .vc-prompt-block p { font-size: 15px; color: var(--ink); line-height: 1.7; margin: 0; }
+  /* Section 8 */
+  .after-days-question { border-left: 3px solid var(--terracotta); padding: 0.85rem 1.25rem; background: var(--terracotta-light); border-radius: 0 var(--radius) var(--radius) 0; margin-top: 0.5rem; }
+  .after-days-question p { font-size: 15px; color: var(--ink); line-height: 1.7; margin: 0 0 0.5rem 0; }
+  .after-days-question p:last-child { margin-bottom: 0; }
+  .after-days-prompt { font-size: 13px !important; color: var(--ink-muted) !important; font-style: italic; }
+  /* Old section C */
   /* Section C — Discussion questions */
   .discussion-questions {
     margin-top: 0;
@@ -801,6 +825,7 @@
     <p class="section-label">Section 5 of 7</p>
     <h2>Outcomes and capabilities</h2>
     <p>What outcomes and capabilities would you like to focus on in this scenario? <span style="color:var(--ink-faint);font-size:14px;">(select all that apply)</span></p>
+    <p style="font-size:14px;color:var(--teal);background:var(--teal-light);border-radius:4px;padding:0.6rem 1rem;margin-bottom:0.5rem;">Your selections here add tailored discussion questions to each day of the scenario in Section 7. Select at least one to see capability-specific questions.</p>
 
     <div class="field-group">
       <div class="checkbox-group" id="capabilitiesGroup">
@@ -851,7 +876,7 @@
 
   <!-- SECTION 6: Preparedness and failure modes -->
   <section class="section" id="section-6">
-    <p class="section-label">Section 6 of 7</p>
+    <p class="section-label">Section 6 of 8</p>
     <h2>Preparedness and problem focus</h2>
 
     <div class="field-group">
@@ -875,23 +900,11 @@
       <div class="radio-group">
         <label class="checkbox-option" style="align-items:flex-start;padding:0.85rem 1rem;" onclick="toggleCheckbox(this,'failureModes',event)">
           <input type="checkbox" value="Bottleneck Failure"><div class="checkbox-box" style="margin-top:3px;flex-shrink:0;"></div>
-          <span>Centralisation and bottlenecks</span>
-        </label>
-        <label class="checkbox-option" style="align-items:flex-start;padding:0.85rem 1rem;" onclick="toggleCheckbox(this,'failureModes',event)">
-          <input type="checkbox" value="Fragmentation Failure"><div class="checkbox-box" style="margin-top:3px;flex-shrink:0;"></div>
-          <span>Coordination gaps and overlaps</span>
-        </label>
-        <label class="checkbox-option" style="align-items:flex-start;padding:0.85rem 1rem;" onclick="toggleCheckbox(this,'failureModes',event)">
-          <input type="checkbox" value="Adequacy Failure"><div class="checkbox-box" style="margin-top:3px;flex-shrink:0;"></div>
-          <span>Formal and informal response</span>
-        </label>
-        <label class="checkbox-option" style="align-items:flex-start;padding:0.85rem 1rem;" onclick="toggleCheckbox(this,'failureModes',event)">
-          <input type="checkbox" value="Misalignment Failure"><div class="checkbox-box" style="margin-top:3px;flex-shrink:0;"></div>
-          <span>Service mismatches and local needs</span>
+          <span>Local NGOs and frontline actors are structurally dependent on a limited number of lead humanitarian agencies for aid resource mobilization.</span>
         </label>
         <label class="checkbox-option" style="align-items:flex-start;padding:0.85rem 1rem;" onclick="toggleCheckbox(this,'failureModes',event)">
           <input type="checkbox" value="Erosion Failure"><div class="checkbox-box" style="margin-top:3px;flex-shrink:0;"></div>
-          <span>Capacity under sustained pressure</span>
+          <span>Local informal support networks, such as neighbours and extended family members, are weaker and deplete much more rapidly than in previous disasters.</span>
         </label>
       </div>
     </div>
@@ -904,7 +917,7 @@
 
   <!-- SECTION 7: Final scenario -->
   <section class="section" id="section-7">
-    <p class="section-label">Section 7 of 7</p>
+    <p class="section-label">Section 7 of 8</p>
     <h2>Your tabletop exercise scenario</h2>
 
     <div id="final-tags" class="tags-row"></div>
@@ -926,8 +939,53 @@
       <button class="print-btn" onclick="startOver()">Start over</button>
     </div>
 
+    <!-- Prompts from VC scenarios -->
+    <div id="vc-prompts-container" style="margin-top:2rem;"></div>
+
     <div class="nav-row">
       <button class="btn btn-secondary" onclick="goTo(6)">← Back</button>
+      <button class="btn btn-primary" onclick="goTo(8)">After days →</button>
+    </div>
+  </section>
+
+  <!-- SECTION 8: After Days -->
+  <section class="section" id="section-8">
+    <p class="section-label">Section 8 of 8</p>
+    <h2>After the ten days</h2>
+    <p>The scenario you have explored covers the first ten days of the event. This section invites you to look further — at longer-term impacts, recovery needs, and what this experience suggests for future preparedness.</p>
+
+    <div class="field-group">
+      <label class="field-label">Long-term impacts</label>
+      <div class="after-days-question">
+        <p>What are the expected long-term impacts of this event, and how should they be managed?</p>
+        <p class="after-days-prompt">Consider: which communities or systems will take the longest to recover? What secondary impacts — on health, livelihoods, and social cohesion — are likely to emerge in the weeks and months ahead?</p>
+      </div>
+    </div>
+
+    <div class="field-group">
+      <label class="field-label">Recovery capacity</label>
+      <div class="after-days-question">
+        <p>What forms of capacity are required for recovery and development beyond the emergency phase?</p>
+        <p class="after-days-prompt">Consider: which actors, resources, and relationships are most important for recovery? What capacity was depleted during the response that now needs to be restored or rebuilt?</p>
+      </div>
+    </div>
+
+    <div class="field-group">
+      <label class="field-label">Lessons for the future</label>
+      <div class="after-days-question">
+        <p>How can lessons drawn from the system scenarios explored in this exercise inform longer-term strategic planning?</p>
+        <p class="after-days-prompt">Consider: what structural changes — in coordination, resource allocation, or community relationships — would make the response to a similar event more effective? What would need to change before the next event occurs?</p>
+      </div>
+    </div>
+
+    <div style="display:flex; gap:0.75rem; margin-top:2rem;">
+      <button class="print-btn" onclick="window.print()">Print / Save PDF</button>
+      <button class="print-btn" onclick="copyScenario()">Copy text</button>
+      <button class="print-btn" onclick="startOver()">Start over</button>
+    </div>
+
+    <div class="nav-row">
+      <button class="btn btn-secondary" onclick="goTo(7)">← Back</button>
     </div>
   </section>
 </div>
@@ -2072,6 +2130,33 @@ const EXCEL_DATA = [
   }
 ];
 
+
+// ─── VULNERABILITY & CAPACITY SCENARIO NARRATIVES ──────────────────────────
+const VC_SCENARIOS = {
+  'Bottleneck Failure': {
+    label: 'Aid dependency on lead agencies',
+    days: {
+      1: `Organizations immediately deploy their limited, pre-positioned stocks to provide immediate, life-saving aid to the affected population. However, these local reserves are rapidly depleted within the first 24 hours, and local NGOs quickly realize they must rely entirely on lead agencies for resupply.`,
+      3: `Organizations complete rapid field assessments to identify critical supply gaps and immediately escalate mass resource requests to international agency headquarters.`,
+      5: `HQ and country offices approve emergency procurement responding to the field request. National and regional logistics hubs are collaboratively processing emergency supplies.`,
+      7: `Lead humanitarian agencies attempt to push resources down to local NGOs, but overloaded distribution networks and bureaucratic red tape trap the bulk of the stock in central warehouses. Local actors are left waiting.`,
+      10: `While supplies are stuck in site warehouses, aid resources only trickle out intermittently to the affected people, causing severe geographical disparities in resource availability. This visible inequity erodes community trust in the humanitarian system.`,
+    },
+    prompt: `When sudden inflows of aid resources occur, how can a highly centralised coordination system be reorganised to better leverage local actors' decision-making capacities, rather than limiting them to implementation?`,
+  },
+  'Erosion Failure': {
+    label: 'Depletion of informal support networks',
+    days: {
+      1: `Within the community, less-affected neighbours immediately share food, clothing, and other essential materials with severely affected families on-site.`,
+      3: `Relatives living outside the immediate impact zone learn of the disaster's severity and quickly mobilize to provide additional informal support to their affected family members.`,
+      5: `While this informal aid helps meet immediate survival needs, affected families still struggle to secure their property and begin the complex process of long-term recovery.`,
+      7: `As the prolonged disaster weakens the local economy and cuts off access to basic resources, neighbours exhaust their own supplies, causing local informal assistance to collapse.`,
+      10: `Support from relatives dwindles to small, intermittent amounts, forcing affected individuals to rely entirely on their own survival strategies with almost no formal or informal safety nets left.`,
+    },
+    prompt: `How can citizens, local entrepreneurs, and philanthropists be effectively engaged in recovery and restoration efforts? To foster participation of those actors in locally led disaster recovery, what enabling conditions need to be in place?`,
+  },
+};
+
 // ─── STATE ─────────────────────────────────────────────────────────────────
 const state = {
   currentSection:1, location:'', hazard:'', intensity:'',
@@ -2126,23 +2211,33 @@ function buildNarrative(dayIndex) {
     return d.toLocaleString('en-US', {month:'long', day:'numeric'});
   }
 
-  // ── Helper: build one day's weather line ─────────────────────────────────
+  // ── Helper: build one day's weather prose sentence ───────────────────────
   function dayWeatherLine(idx) {
     const ds = getDayDate(dataRow, idx);
     const label = fmtDate(ds) || `Day ${idx+1}`;
     const hv = heatRow ? getDayValue(heatRow, idx, 'temp') : null;
     const rv = rainRow ? getDayValue(rainRow, idx, 'prcp') : null;
 
-    let values = [];
-    if (isHeat && hv !== null) values.push(`${hv}${tempUnit}`);
-    if (isRain && rv !== null) values.push(`${rv}mm rain`);
-    if (values.length === 0) return null;
-    return `<span class="weather-date">${label}</span><span class="weather-vals">${values.join(' &nbsp;·&nbsp; ')}</span>`;
+    let sentence = `On ${label},`;
+    if (isHeat && isRain) {
+      // Compound — always mention both
+      const tempPart = hv !== null ? ` high temperatures reached ${hv}${tempUnit}` : '';
+      const rainPart = rv !== null ? ` and there was ${rv}mm of precipitation` : '';
+      if (!tempPart && !rainPart) return null;
+      sentence += tempPart + rainPart + '.';
+    } else if (isHeat && hv !== null) {
+      sentence += ` high temperatures reached ${hv}${tempUnit}.`;
+    } else if (isRain && rv !== null) {
+      sentence += ` there was ${rv}mm of precipitation.`;
+    } else {
+      return null;
+    }
+    return `<div class="weather-row">${sentence}</div>`;
   }
 
   // ── Build weather lines for all days in range ─────────────────────────────
   const lines = indices.map(idx => dayWeatherLine(idx)).filter(Boolean);
-  const weatherOpening = `<div class="weather-log">${lines.map(l => `<div class="weather-row">${l}</div>`).join('')}</div>`;
+  const weatherOpening = `<div class="weather-log">${lines.join('')}</div>`;
 
   // Peak values (for arc context)
   const allTemps = heatRow ? heatRow.days.map(d=>d.temp).filter(v=>v!==null) : [];
@@ -2400,49 +2495,51 @@ function buildQuestions(dayIndex) {
 
   const questions = [];
 
+  // ── Shared questions (vary by day phase and intensity) ───────────────────
   if (dayIndex === 0) {
-    // Day 1 — single orienting question only
-    questions.push(sharedQs[0]);
-
+    questions.push(sharedQs[0]);                    // Day 1: 1 shared only
   } else if (dayIndex === 1) {
-    // Day 3 — 1 shared + 1 failure or capability
-    questions.push(sharedQs[0]);
-    let added = false;
-    for (const fm of failureModes) {
-      if (failureQs[fm]) { questions.push(failureQs[fm][dayIndex][0]); added = true; break; }
-    }
-    if (!added && capabilities.length > 0) {
-      const cap = capabilities[dayIndex % capabilities.length];
-      if (capabilityQs[cap]) questions.push(capabilityQs[cap][dayIndex]);
-    }
-
+    questions.push(sharedQs[0]);                    // Day 3: 1 shared
   } else {
-    // Days 5, 7, 10 — full set, scaled by intensity
-    questions.push(...sharedQs);
+    questions.push(...sharedQs);                    // Days 5-10: all shared
+  }
 
-    // Failure mode question
-    for (const fm of failureModes) {
-      if (failureQs[fm]) { questions.push(failureQs[fm][dayIndex][0]); break; }
-    }
+  // ── Failure mode question (all days when a concern is selected) ──────────
+  for (const fm of failureModes) {
+    if (failureQs[fm]) { questions.push(failureQs[fm][dayIndex][0]); break; }
+  }
 
-    // Capability question — for 10-yr, only if no failure mode was added
-    const hasFailure = failureModes.some(fm => failureQs[fm]);
-    if (capabilities.length > 0) {
-      if (!is10yr || !hasFailure) {
-        const cap = capabilities[dayIndex % capabilities.length];
-        if (capabilityQs[cap]) questions.push(capabilityQs[cap][dayIndex]);
+  // ── Capability questions (ALL days when capabilities are selected) ────────
+  // One question per selected capability, for every day.
+  // Rotate through capabilities so each day highlights a different one first.
+  if (capabilities.length > 0) {
+    // Build a rotated list starting from a different capability each day
+    const rotated = capabilities
+      .map((cap, i) => capabilities[(i + dayIndex) % capabilities.length])
+      .filter((cap, i, arr) => arr.indexOf(cap) === i); // dedupe
+    for (const cap of rotated) {
+      if (capabilityQs[cap] && capabilityQs[cap][dayIndex]) {
+        questions.push(capabilityQs[cap][dayIndex]);
       }
     }
+  } else if (dayIndex >= 2) {
+    // No capability selected on Days 5-10 — show a generic fallback
+    const genericCapQs = [
+      `Which specific services or systems in your organisation are most directly stressed by this event on ${dayName}? How are you monitoring and managing that?`,
+      `Which part of your response system is closest to its limits right now, and what would it mean if it failed?`,
+      `Which actors or systems that your organisation depends on are performing below expectations, and what are you doing about it?`,
+    ];
+    questions.push(genericCapQs[dayIndex - 2]);
+  }
 
-    // Extra intensity-specific prompt for worst-case events
-    if (isWorst) {
-      const worstQs = [
-        `This event is at the outer limit of what models project. Are there aspects of this situation that your organisation has genuinely never planned for? How are you making decisions in that territory?`,
-        `At this scale, some normal response assumptions may not hold. What has surprised you most about how the situation has developed, and how has that changed your approach?`,
-        `This is an unprecedented level of stress on your systems. What would you need — that you do not currently have — to respond adequately at this scale?`,
-      ];
-      questions.push(worstQs[dayIndex - 2]);
-    }
+  // ── Extra intensity question for worst-case events on Days 5-10 ─────────
+  if (isWorst && dayIndex >= 2) {
+    const worstQs = [
+      `This event is at the outer limit of what models project. Are there aspects of this situation that your organisation has genuinely never planned for? How are you making decisions in that territory?`,
+      `At this scale, some normal response assumptions may not hold. What has surprised you most about how the situation has developed, and how has that changed your approach?`,
+      `This is an unprecedented level of stress on your systems. What would you need — that you do not currently have — to respond adequately at this scale?`,
+    ];
+    questions.push(worstQs[dayIndex - 2]);
   }
 
   return questions.filter(Boolean);
@@ -2823,22 +2920,24 @@ function buildDesignerPrompts(dayIndex) {
 function renderDayHTML(dayLabel, dayIndex) {
   const narrative = buildNarrative(dayIndex);
   const questions = buildQuestions(dayIndex);
-  const designerPrompts = buildDesignerPrompts(dayIndex);
 
-  const designerHtml = `<div class="designer-prompts">${
-    designerPrompts.map((p, i) => `
-      <div class="designer-prompt">
-        ${p.hint ? `<div class="designer-prompt-hint">${p.hint}</div>` : ''}
-        <div class="designer-prompt-q"><strong>Q${i+1}.</strong> ${p.q}</div>
+  // Build VC system narrative for selected failure modes
+  const scenarioDayKey = [1, 3, 5, 7, 10][dayIndex];
+  const vcBlocks = state.failureModes.map(fm => {
+    const sc = VC_SCENARIOS[fm];
+    if (!sc || !sc.days[scenarioDayKey]) return null;
+    return `<div class="vc-block">
+      <div class="vc-block-label">${sc.label}</div>
+      <p class="vc-block-text">${sc.days[scenarioDayKey]}</p>
+    </div>`;
+  }).filter(Boolean);
 
-      </div>`).join('')
-  }</div>`;
+  const vcHtml = vcBlocks.length
+    ? `<div class="vc-narratives">${vcBlocks.join('')}</div>`
+    : `<p class="vc-none">No system scenario selected. Choose an option in Section 6 to see how the disaster management system evolves.</p>`;
 
   const qHtml = questions.length
-    ? `<div class="discussion-questions">
-        <div class="discussion-questions-label">Discussion questions</div>
-        <ol>${questions.map(q => `<li>${q}</li>`).join('')}</ol>
-       </div>`
+    ? `<ol class="discussion-list">${questions.map(q => `<li>${q}</li>`).join('')}</ol>`
     : '';
 
   return `<div class="final-day">
@@ -2853,27 +2952,26 @@ function renderDayHTML(dayLabel, dayIndex) {
         <div class="day-section-body">${narrative}</div>
       </div>
 
-      <div class="day-section designer">
+      <div class="day-section vc-system">
         <div class="day-section-header">
           <span class="section-num">B</span>
-          Design questions — answer these when preparing your scenario
+          Disaster management system
         </div>
-        <div class="day-section-body">${designerHtml}</div>
+        <div class="day-section-body">${vcHtml}</div>
       </div>
 
-      <div class="day-section">
-        <div class="day-section-header" style="background:var(--teal-light);color:var(--teal);">
-          <span class="section-num" style="background:var(--teal);color:white;">C</span>
+      <div class="day-section discussion">
+        <div class="day-section-header">
+          <span class="section-num">C</span>
           Discussion questions for participants
         </div>
-        <div class="day-section-body" style="background:white;border:1px solid rgba(42,107,107,0.15);border-top:none;">
-          ${qHtml}
-        </div>
+        <div class="day-section-body">${qHtml}</div>
       </div>
 
     </div>
   </div>`;
 }
+
 
 function renderFinalScenario() {
   const contentEl = document.getElementById('final-scenario-content');
@@ -2881,13 +2979,29 @@ function renderFinalScenario() {
   contentEl.innerHTML = '<div class="final-days">' +
     dayDefs.map(([label, idx]) => renderDayHTML(label, idx)).join('') +
     '</div>';
+
+  // Render VC prompts at the bottom
+  const promptsEl = document.getElementById('vc-prompts-container');
+  if (promptsEl) {
+    const promptBlocks = state.failureModes.map(fm => {
+      const sc = VC_SCENARIOS[fm];
+      if (!sc || !sc.prompt) return null;
+      return `<div class="vc-prompt-block">
+        <div class="vc-prompt-label">Reflection prompt — ${sc.label}</div>
+        <p>${sc.prompt}</p>
+      </div>`;
+    }).filter(Boolean);
+    promptsEl.innerHTML = promptBlocks.length
+      ? `<h3 style="font-family:'Playfair Display',Georgia,serif;font-size:1.1rem;margin-bottom:1rem;color:var(--ink);">Reflection prompts</h3><div class="vc-prompts">${promptBlocks.join('')}</div>`
+      : '';
+  }
 }
 
 // ─── PROGRESS BAR ──────────────────────────────────────────────────────────
 function renderProgress() {
   const bar = document.getElementById('progressBar');
   bar.innerHTML = '';
-  for (let i = 1; i <= 7; i++) {
+  for (let i = 1; i <= 8; i++) {
     const step = document.createElement('div');
     step.className = 'progress-step';
     const dot = document.createElement('div');
@@ -3014,6 +3128,7 @@ function startOver() {
   document.getElementById('final-scenario-title').textContent = '';
   document.getElementById('final-scenario-meta').textContent = '';
   document.getElementById('final-scenario-content').innerHTML = '';
+  const pe = document.getElementById('vc-prompts-container'); if (pe) pe.innerHTML = '';
   // Clear section 3 preview too
   document.getElementById('preview-scenario-content').innerHTML = '';
   goTo(1);
