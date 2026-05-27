@@ -2200,30 +2200,168 @@ const EXCEL_DATA = [
 
 
 // ─── VULNERABILITY & CAPACITY SCENARIO NARRATIVES ──────────────────────────
+// Narratives are now keyed by failure mode → hazard → intensity → day
+// Hazard keys: 'All', 'Heatwave', 'Extreme rainfall'
+// Intensity keys: 'All', '10-year', '100-year and Worst ever', '100-year', 'Worst ever'
+// renderDayHTML selects the most specific matching key at runtime.
+
 const VC_SCENARIOS = {
   'Bottleneck Failure': {
     label: 'Aid dependency on lead agencies',
-    days: {
-      1: `Work is business-as-usual; there is chatter about the weather forecast.`,
-      3: `There is increasing alarm about the weather forecast across organizations and the public.`,
-      5: `Organizations are deploying the limited, pre-positioned stocks. These are easily depleted. HQ and country offices approve emergency procurement responding to the field request. National and regional logistics hubs are collaboratively processing emergency supplies.`,
-      7: `Lead humanitarian agencies attempt to push resources down to local NGOs, but overloaded distribution networks and bureaucratic red tape trap the bulk of the stock in central warehouses. Local actors are left waiting.`,
-      10: `While supplies are stuck in site warehouses, aid resources only trickle out intermittently to the affected people, causing severe geographical disparities in resource availability. This visible inequity erodes community trust in the humanitarian system.`,
+    narratives: {
+      'All': {
+        'All': {
+          1: `The local disaster management committee convenes a coordination meeting to confirm common pool resources and organisational emergency aid stocks.`,
+          3: null, // split by hazard below
+          5: null,
+          7: null,
+          10: null,
+        },
+      },
+      'Heatwave': {
+        'All': {
+          3: `In collaboration with local NGOs, lead organisations begin aid provision, focusing on vulnerable populations where impacts are beginning to be reported.`,
+        },
+        '10-year': {
+          5: `According to the response plan, organisations manage and deploy pre-positioned stocks to support the growing number of affected people with immediate, life-saving aid, while initiating ongoing needs assessments. While initiating ongoing needs assessments, they continue managing available stocks.`,
+        },
+        '100-year and Worst ever': {
+          5: `According to the response plan, organisations manage and deploy pre-positioned stocks to support the growing number of affected people with immediate, life-saving aid. While conducting continuous needs assessments, they realise that stocks are being rapidly depleted.`,
+        },
+        '100-year': {
+          7: `Despite easing temperatures, emergency treatment for heat exhaustion and heat stroke is becoming increasingly strained as medications and medical facilities are overwhelmed by the growing number of affected people. Local NGOs realise they must rely entirely on lead agencies for resupply, with limited capacity for self-organised resource mobilisation. Although national and regional logistics hubs are collaboratively processing emergency supplies, overloaded distribution networks and bureaucratic delays are trapping most stocks in central warehouses, leaving local actors waiting.`,
+        },
+        'Worst ever': {
+          7: `Despite easing temperatures, the influx of affected people from neighbouring regions has accelerated medicine shortages, while treatment facilities for heat exhaustion and heat stroke are operating far beyond their service capacity. Local NGOs realise they must rely entirely on lead agencies for resupply, with limited capacity for self-organised resource mobilisation. Although national and regional logistics hubs are collaboratively processing emergency supplies, overloaded distribution networks and bureaucratic delays are trapping most stocks in central warehouses, leaving local actors waiting.`,
+        },
+      },
+      'Extreme rainfall': {
+        'All': {
+          3: `In collaboration with local NGOs, lead organisations begin aid provision, focusing on vulnerable areas where impacts are beginning to be reported.`,
+        },
+        '10-year': {
+          5: `According to the response plan, organisations manage and deploy pre-positioned stocks to support the growing affected areas with immediate, life-saving aid, while initiating ongoing needs assessments. While initiating ongoing needs assessments, they continue managing available stocks.`,
+        },
+        '100-year and Worst ever': {
+          5: `According to the response plan, organisations manage and deploy pre-positioned stocks to support the growing affected areas with immediate, life-saving aid. While conducting continuous needs assessments, they realise that stocks are being rapidly depleted. HQ and country offices approve emergency procurement responding to the field request.`,
+        },
+        '100-year': {
+          7: `Although floodwaters are receding, local reserves have been increasingly depleted. While organisations continue maintaining emergency aid operations, some resources for shelter, WASH, and health services are beginning to run out completely. Local NGOs are relying entirely on lead agencies for resupply. Although national and regional logistics hubs are collaboratively processing emergency supplies, overloaded distribution networks and bureaucratic delays are trapping most stocks in central warehouses, leaving local actors waiting.`,
+        },
+        'Worst ever': {
+          7: `Although floodwaters are receding, the influx of affected people from neighbouring regions has accelerated shortages in shelter, WASH, and health services. Local reserves are now entirely depleted. Local NGOs, fully dependent on lead agencies for resupply, are awaiting delayed emergency deliveries. Although national and regional logistics hubs are collaboratively processing emergency supplies, overloaded distribution networks and bureaucratic delays are trapping most stocks in central warehouses, leaving local actors waiting.`,
+        },
+      },
+      '_all_hazards': {
+        '10-year': {
+          7: `As the events begin to subside, organisations undertake more detailed assessments of impacts and needs. Lead organisations request additional resources from their country offices and do not experience major difficulties in stock management. However, logistics operations at affected sites become increasingly time-consuming as local NGOs exhaust their available resources and gradually begin relying more heavily on lead agencies for resupply.`,
+          10: `Humanitarian needs are no longer increasing, while organisations continue emergency aid as affected people still require assistance. However, local reserves have been increasingly depleted as operations continue over several days. Local NGOs are now relying entirely on lead agencies for resupply.`,
+        },
+        '100-year and Worst ever': {
+          10: `A large volume of aid resources is delivered to the affected area. Lead humanitarian agencies attempt to channel resources to local NGOs, but overloaded distribution networks and bureaucratic delays trap most stocks in central warehouses, leaving local actors waiting.`,
+        },
+      },
     },
     prompt: `When sudden inflows of aid resources occur, how can a highly centralised coordination system be reorganised to better leverage local actors' decision-making capacities, rather than limiting them to implementation?`,
   },
+
   'Erosion Failure': {
     label: 'Depletion of informal support networks',
-    days: {
-      1: `Work is business-as-usual; there is chatter about the weather forecast.`,
-      3: `There is increasing alarm about the weather forecast across organizations and the public.`,
-      5: `Within the community, less-affected neighbours immediately share food, clothing, and other essential materials with severely affected families on-site. Relatives living outside the immediate impact zone mobilize to provide additional informal support to their affected family members. While this informal aid helps meet immediate survival needs, affected families still struggle to secure their property and begin the complex process of long-term recovery.`,
-      7: `As the prolonged disaster weakens the local economy and cuts off access to basic resources, neighbours exhaust their own supplies, causing local informal assistance to collapse.`,
-      10: `Support from relatives dwindles to small, intermittent amounts, forcing affected individuals to rely entirely on their own survival strategies with almost no formal or informal safety nets left.`,
+    narratives: {
+      'All': {
+        'All': {
+          1: `Community members begin checking on neighbours and relatives, identifying those who may need support.`,
+        },
+      },
+      'Heatwave': {
+        'All': {
+          3: `As temperatures rise, neighbours and extended family members initiate informal care, particularly for elderly and young children who are the first to show signs of heat-related distress. While this informal aid helps meet immediate survival needs, people struggle to secure their property and protect livelihood assets from the intensifying heat.`,
+        },
+        '10-year': {
+          5: `Informal caregiving networks remain largely intact, though volunteers report physical exhaustion from sustained effort. Some households withdraw from mutual aid as they prioritise their own family's needs, creating localised gaps in coverage for the most isolated residents.`,
+        },
+        '100-year and Worst ever': {
+          5: `Community volunteers are incapacitated by widespread heat exhaustion, and extended family networks have largely dissolved as members flee the area or are themselves critically affected. Elderly and chronically ill individuals are left extremely vulnerable with limited informal support.`,
+        },
+        '100-year': {
+          7: `Despite easing temperatures, support from relatives dwindles to small, intermittent amounts as the prolonged health burden strains extended family networks. Community volunteers who were incapacitated remain unwell, leaving isolated and vulnerable individuals without adequate support.`,
+        },
+        'Worst ever': {
+          7: `Despite easing temperatures, the informal support system remains collapsed. Support from relatives dwindles to small, intermittent amounts, forcing affected individuals to rely entirely on their own survival strategies with almost no formal or informal safety nets left.`,
+        },
+      },
+      'Extreme rainfall': {
+        'All': {
+          3: `As flooding begins to affect the area, community members offer their homes as temporary shelters and share food with neighbours and relatives among the first and most affected. While this informal support helps meet immediate survival needs, people struggle to secure their property and protect livelihood assets amid intensifying conditions.`,
+        },
+        '10-year': {
+          5: `A limited number of households are severely affected. The broader community continues to manage informal support, with neighbours absorbing displaced families and pooling resources. Volunteers face some difficulty reaching isolated residents due to inundated routes.`,
+        },
+        '100-year and Worst ever': {
+          5: `A large number of households across the community are severely affected, overwhelming the capacity of informal mutual support. Physical access between neighbourhoods is disrupted, fragmenting support networks.`,
+        },
+        '100-year': {
+          7: `Although floodwaters are receding, support from relatives dwindles to small, intermittent amounts as the prolonged health burden strains extended family networks. Community volunteers who were incapacitated remain unwell, leaving isolated and vulnerable individuals without adequate support.`,
+        },
+        'Worst ever': {
+          7: `Although floodwaters are receding, the informal support system remains collapsed. Support from relatives dwindles to small, intermittent amounts, forcing affected individuals to rely entirely on their own survival strategies with almost no formal or informal safety nets left.`,
+        },
+      },
+      '_all_hazards': {
+        '10-year': {
+          7: `Informal support networks partially remain functional while severely affected people continue to rely on neighbours and family members to meet urgent needs where formal aid services present gaps in protection.`,
+          10: `As families turn their attention to their own recovery, the capacity for sustained mutual support reaches its limits, with informal networks reduced to sharing insufficient amounts of food among neighbours.`,
+        },
+        '100-year and Worst ever': {
+          10: `The catastrophic scale of loss and damage has left the entire community in extremely precarious condition. All communities are now almost entirely dependent on formal humanitarian assistance, with informal safety nets having dissolved.`,
+        },
+      },
     },
     prompt: `How can citizens, local entrepreneurs, and philanthropists be effectively engaged in recovery and restoration efforts? To foster participation of those actors in locally led disaster recovery, what enabling conditions need to be in place?`,
   },
 };
+
+// Helper: get the best matching VC narrative for current hazard + intensity + day
+function getVCNarrative(fm, dayKey) {
+  const sc = VC_SCENARIOS[fm];
+  if (!sc) return null;
+  const hazard = state.hazard; // 'Heatwave', 'Extreme rainfall', 'Compound event'
+  const intensity = state.intensity;
+  // Normalise intensity to match Excel keys
+  const is10yr   = intensity === 'Something that might happen every few years';
+  const is100yr  = intensity === 'A once-in-a-century event';
+  const isWorst  = intensity === 'The worst event our weather models can produce';
+  const intKey10 = '10-year';
+  const intKey100 = '100-year';
+  const intKeyW   = 'Worst ever';
+  const intKeyBoth = '100-year and Worst ever';
+  const intNorm = is10yr ? intKey10 : is100yr ? intKey100 : isWorst ? intKeyW : 'All';
+
+  const hazNorm = (hazard === 'Heatwave') ? 'Heatwave'
+                : (hazard === 'Extreme rainfall') ? 'Extreme rainfall'
+                : 'All';
+
+  const n = sc.narratives;
+
+  // Priority lookup: specific hazard + specific intensity > specific hazard + combined >
+  //   specific hazard + All > _all_hazards + specific > _all_hazards + combined >
+  //   All + All
+  const candidates = [];
+  if (n[hazNorm]) {
+    if (n[hazNorm][intNorm]?.[dayKey] != null) candidates.push(n[hazNorm][intNorm][dayKey]);
+    if ((is100yr || isWorst) && n[hazNorm][intKeyBoth]?.[dayKey] != null)
+      candidates.push(n[hazNorm][intKeyBoth][dayKey]);
+    if (n[hazNorm]['All']?.[dayKey] != null) candidates.push(n[hazNorm]['All'][dayKey]);
+  }
+  if (n['_all_hazards']) {
+    if (n['_all_hazards'][intNorm]?.[dayKey] != null) candidates.push(n['_all_hazards'][intNorm][dayKey]);
+    if ((is100yr || isWorst) && n['_all_hazards'][intKeyBoth]?.[dayKey] != null)
+      candidates.push(n['_all_hazards'][intKeyBoth][dayKey]);
+    if (n['_all_hazards']['All']?.[dayKey] != null) candidates.push(n['_all_hazards']['All'][dayKey]);
+  }
+  if (n['All']?.['All']?.[dayKey] != null) candidates.push(n['All']['All'][dayKey]);
+  return candidates[0] || null;
+}
 
 // ─── STATE ─────────────────────────────────────────────────────────────────
 const state = {
@@ -2396,8 +2534,8 @@ function buildQuestions(dayIndex) {
 
   const sharedQs = isEarly ? [
     dayIndex === 0
-      ? `How is your organisation's normal day-to-day work going on Day 1? Are you aware this event is developing, and has anything changed in how you are operating?`
-      : `By Day 3, is your organisation actively responding, monitoring, or still largely focused on normal work? What has triggered any change in your level of attention?`,
+      ? `How is your organisation actively monitoring the development of the event? How clearly does your organisation understand the necessary preparedness actions over the next five days?`
+      : `To what extent is your organisation engaging in meetings and communication with partner organisations? How effectively are your organisation and its partners engaging with communities to support disaster preparedness?`,
     dayIndex === 0
       ? `Does your organisation have a plan for this type of event? Has it been activated, and who would make that decision?`
       : state.intensity === 'The worst event our weather models can produce'
@@ -2410,9 +2548,13 @@ function buildQuestions(dayIndex) {
       : state.intensity === 'A once-in-a-century event'
       ? `You receive two urgent requests for support at the same time — both serious. Walk through how you decide which to respond to first.`
       : `The scale of this event is beyond what most plans anticipated. What decisions are you making now that have no clear precedent in your protocols?`,
-  ] : [
+  ] : dayIndex === 3 ? [
+    // Day 7 — two shared questions
     `Your team is showing signs of fatigue after days of sustained response. How do you manage this while maintaining operations?`,
     `Looking back at decisions made earlier in the event, which one would you revisit, and what would you do differently?`,
+  ] : [
+    // Day 10 — one shared question
+    `To address the residual impacts of the event, how can your organisation strengthen collaboration with local partners to sustain emergency response and recovery efforts?`,
   ];
 
   // ── Failure-mode questions — focused on participant choices under that failure ──
@@ -3034,11 +3176,12 @@ function renderDayHTML(dayLabel, dayIndex) {
   // Build VC system narrative for selected failure modes
   const scenarioDayKey = [1, 3, 5, 7, 10][dayIndex];
   const vcBlocks = state.failureModes.map(fm => {
+    const text = getVCNarrative(fm, scenarioDayKey);
     const sc = VC_SCENARIOS[fm];
-    if (!sc || !sc.days[scenarioDayKey]) return null;
+    if (!text || !sc) return null;
     return `<div class="vc-block">
       <div class="vc-block-label">${sc.label}</div>
-      <p class="vc-block-text">${sc.days[scenarioDayKey]}</p>
+      <p class="vc-block-text">${text}</p>
     </div>`;
   }).filter(Boolean);
 
@@ -3096,6 +3239,7 @@ function renderFinalScenario() {
     const promptBlocks = state.failureModes.map(fm => {
       const sc = VC_SCENARIOS[fm];
       if (!sc || !sc.prompt) return null;
+      // sc.prompt is still a flat string
       return `<div class="vc-prompt-block">
         <div class="vc-prompt-label">Reflection prompt — ${sc.label}</div>
         <p>${sc.prompt}</p>
