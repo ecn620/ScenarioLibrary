@@ -2251,7 +2251,7 @@ function buildMap() {
         const v = vMin + t*(vMax-vMin);
         return `<span class="swatch" style="background:${colour(v)}"></span>`;
       }).join('')
-    + `<span>Hotter (100-year peak, °C)</span>`;
+    + `<span>Hotter</span>`;
 
   MAP.built = true;
 }
@@ -2271,8 +2271,7 @@ function selectGridCell(key, cellEl) {
   const sel = document.getElementById('mapSelected');
   sel.classList.remove('empty');
   sel.innerHTML = `Selected: <strong>${box.lat}°N, ${box.lon}°E</strong> — `
-    + `A bad heatwave could hit ${box.rv100}°C. `<br>
-    + `Heatwave scenarios are available in this location.`;
+    + `A bad heatwave could hit ${box.rv100}°C. `;
 
   document.getElementById('btn2next').disabled = false;
 }
