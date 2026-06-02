@@ -2271,7 +2271,7 @@ function selectGridCell(key, cellEl) {
   const sel = document.getElementById('mapSelected');
   sel.classList.remove('empty');
   sel.innerHTML = `Selected: <strong>${box.lat}°N, ${box.lon}°E</strong> — `
-    + `possible heatwave reaching ${box.rv100}°C (We would call this location a "${box.duck}"). `
+    + `A bad heatwave could hit ${box.rv100}°C. (We would call this location a "${box.duck}"). `
     + `Heatwave scenarios are available in this location.`;
 
   document.getElementById('btn2next').disabled = false;
