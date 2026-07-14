@@ -769,7 +769,7 @@
   <section class="section" id="section-3">
     <p class="section-label">Section 3 of 7</p>
     <h2 id="sec3-title">Disaster scenarios for your location</h2>
-    <p>Disaster scenarios help us prepare for extreme events. Using NASA data and weather models, we have identified several scenarios of extreme weather that could happen in your area. Here is an example of an extreme heatwave:</p>
+    <p>Disaster scenarios help us prepare for extreme events. Using NASA data and weather models, we have identified several scenarios of extreme weather that could happen in your area.<br><br>These scenarios represent possible events that could happen this year or in the next few years. We use weather models that take into account changes in our weather and climate to simulate extreme events that are possible in today's climate. However, all of these dates with weather data are hypothetical simulations for scenario exercises; they do not represent real events.<br><br>Here is an example of an extreme weather event:</p>
 
     <div class="scenario-box" id="preview-scenario-box">
       <div class="scenario-header">
@@ -845,38 +845,35 @@
   <!-- SECTION 5: Outcomes and capabilities -->
   <section class="section" id="section-5">
     <p class="section-label">Section 5 of 7</p>
-    <h2>Outcomes and capabilities</h2>
+    <h2>Capabilities</h2>
     <p>What outcomes and capabilities would you like to focus on in this scenario? <span style="color:var(--ink-faint);font-size:14px;">(select all that apply)</span></p>
     <p style="font-size:14px;color:var(--teal);background:var(--teal-light);border-radius:4px;padding:0.6rem 1rem;margin-bottom:0.5rem;">Your selections here add tailored discussion questions to each day of the scenario in Section 7. Select at least one to see capability-specific questions.</p>
 
     <div class="field-group">
       <div class="checkbox-group" id="capabilitiesGroup">
         <label class="checkbox-option" onclick="toggleCheckbox(this,'capabilities',event)">
-          <input type="checkbox" value="Critical Transportation"><div class="checkbox-box"></div><span>Critical Transportation</span>
+          <input type="checkbox" value="Critical Transportation"><div class="checkbox-box"></div><span>Transportation</span>
         </label>
         <label class="checkbox-option" onclick="toggleCheckbox(this,'capabilities',event)">
-          <input type="checkbox" value="Food Security"><div class="checkbox-box"></div><span>Food Security</span>
+          <input type="checkbox" value="Food Security"><div class="checkbox-box"></div><span>Food</span>
         </label>
         <label class="checkbox-option" onclick="toggleCheckbox(this,'capabilities',event)">
-          <input type="checkbox" value="Health and Social Services"><div class="checkbox-box"></div><span>Health and Social Services</span>
+          <input type="checkbox" value="Health and Social Services"><div class="checkbox-box"></div><span>Health</span>
         </label>
         <label class="checkbox-option" onclick="toggleCheckbox(this,'capabilities',event)">
           <input type="checkbox" value="Housing"><div class="checkbox-box"></div><span>Housing</span>
         </label>
         <label class="checkbox-option" onclick="toggleCheckbox(this,'capabilities',event)">
-          <input type="checkbox" value="Infrastructure Systems"><div class="checkbox-box"></div><span>Infrastructure Systems</span>
+          <input type="checkbox" value="Infrastructure Systems"><div class="checkbox-box"></div><span>Infrastructure</span>
         </label>
         <label class="checkbox-option" onclick="toggleCheckbox(this,'capabilities',event)">
-          <input type="checkbox" value="Logistics and Supply Chain Management"><div class="checkbox-box"></div><span>Logistics and Supply Chain Management</span>
+          <input type="checkbox" value="Logistics and Supply Chain Management"><div class="checkbox-box"></div><span>Logistics</span>
         </label>
         <label class="checkbox-option" onclick="toggleCheckbox(this,'capabilities',event)">
           <input type="checkbox" value="Operational Communications"><div class="checkbox-box"></div><span>Operational Communications</span>
         </label>
         <label class="checkbox-option" onclick="toggleCheckbox(this,'capabilities',event)">
           <input type="checkbox" value="Public Information and Warning"><div class="checkbox-box"></div><span>Public Information and Warning</span>
-        </label>
-        <label class="checkbox-option" onclick="toggleCheckbox(this,'capabilities',event)">
-          <input type="checkbox" value="Situational Assessment"><div class="checkbox-box"></div><span>Situational Assessment</span>
         </label>
       </div>
     </div>
@@ -898,12 +895,12 @@
         <label class="radio-option" onclick="selectRadio(this, 'novelty', 'Known hazard')">
           <input type="radio" name="novelty" value="Known hazard">
           <div class="radio-dot"></div>
-          <span class="radio-text">This is an unusually severe but known hazard. We are familiar with this type of event and have plans and protocols in place.</span>
+          <span class="radio-text">We are familiar with this hazard, but this is unusually severe compared to previous events.</span>
         </label>
         <label class="radio-option" onclick="selectRadio(this, 'novelty', 'Unprecedented')">
           <input type="radio" name="novelty" value="Unprecedented">
           <div class="radio-dot"></div>
-          <span class="radio-text">This is a surprising event. This type of event would be novel and unprecedented for us to manage.</span>
+          <span class="radio-text">This is a surprising event that we have not managed before.</span>
         </label>
       </div>
     </div>
@@ -953,9 +950,6 @@
       <button class="print-btn" onclick="startOver()">Start over</button>
     </div>
 
-    <!-- Prompts from VC scenarios -->
-    <div id="vc-prompts-container" style="margin-top:2rem;"></div>
-
     <div class="nav-row">
       <button class="btn btn-secondary" onclick="goTo(6)">← Back</button>
       <button class="btn btn-primary" onclick="goTo(8)">After days →</button>
@@ -967,6 +961,27 @@
     <p class="section-label">Section 8 of 8</p>
     <h2>After the ten days</h2>
     <p>The scenario you have explored covers the first ten days of the event. This section invites you to look further — at longer-term impacts, recovery needs, and what this experience suggests for future preparedness.</p>
+
+    <div class="field-group">
+      <label class="field-label">Exercise reflection</label>
+      <div class="after-days-question">
+        <p>What worked well during this exercise? What did you learn during this exercise?</p>
+      </div>
+    </div>
+
+    <div class="field-group">
+      <label class="field-label">Gaps and revisions</label>
+      <div class="after-days-question">
+        <p>What gaps in your existing plans did this exercise reveal that need to be addressed? Are there any new procedures that need to be developed, or can existing ones be revised to address these gaps? Who will be responsible for these developments and revisions?</p>
+      </div>
+    </div>
+
+    <div class="field-group">
+      <label class="field-label">Ongoing evaluation</label>
+      <div class="after-days-question">
+        <p>Based on this scenario, how will you continue to evaluate your existing procedures and keep them up-to-date?</p>
+      </div>
+    </div>
 
     <div class="field-group">
       <label class="field-label">Long-term impacts</label>
@@ -2034,30 +2049,13 @@ function renderFinalScenario() {
   contentEl.innerHTML = '<div class="final-days">' +
     dayDefs.map(([label, idx]) => renderDayHTML(label, idx)).join('') +
     '</div>';
-
-  // Render VC prompts at the bottom
-  const promptsEl = document.getElementById('vc-prompts-container');
-  if (promptsEl) {
-    const promptBlocks = state.failureModes.map(fm => {
-      const sc = VC_SCENARIOS[fm];
-      if (!sc || !sc.prompt) return null;
-      // sc.prompt is still a flat string
-      return `<div class="vc-prompt-block">
-        <div class="vc-prompt-label">Reflection prompt — ${sc.label}</div>
-        <p>${sc.prompt}</p>
-      </div>`;
-    }).filter(Boolean);
-    promptsEl.innerHTML = promptBlocks.length
-      ? `<h3 style="font-family:'Playfair Display',Georgia,serif;font-size:1.1rem;margin-bottom:1rem;color:var(--ink);">Reflection prompts</h3><div class="vc-prompts">${promptBlocks.join('')}</div>`
-      : '';
-  }
 }
 
 // ─── POWERPOINT EXPORT ─────────────────────────────────────────────────────
 // Full descriptive text for the two preparedness options (state stores the key).
 const NOVELTY_TEXT = {
-  'Known hazard':  'This is an unusually severe but known hazard. We are familiar with this type of event and have plans and protocols in place.',
-  'Unprecedented': 'This is a surprising event. This type of event would be novel and unprecedented for us to manage.',
+  'Known hazard':  'We are familiar with this hazard, but this is unusually severe compared to previous events.',
+  'Unprecedented': 'This is a surprising event that we have not managed before.',
 };
 
 // Read the scenario that is already rendered on screen into a plain-text
